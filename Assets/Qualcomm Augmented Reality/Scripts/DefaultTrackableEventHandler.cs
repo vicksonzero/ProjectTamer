@@ -29,6 +29,14 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         {
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
+        GameObject compCamera = GameObject.Find("ComputerCamera");
+        if (compCamera != null && compCamera.activeSelf)
+        {
+
+            Debug.Log("TrackableBehaviour not found, activating myself");
+            OnTrackingFound();
+        }
+        
     }
 
     #endregion // UNTIY_MONOBEHAVIOUR_METHODS

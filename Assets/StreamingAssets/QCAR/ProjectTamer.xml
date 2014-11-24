@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="letsPlay" size="148.000000 205.423996" />
+    <ImageTarget name="UKent" size="70.000000 40.110001" />
+  </Tracking>
+</QCARConfig>
