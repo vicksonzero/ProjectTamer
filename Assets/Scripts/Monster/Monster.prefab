@@ -217,7 +217,7 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: Red
-  m_Anchor: 7
+  m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
