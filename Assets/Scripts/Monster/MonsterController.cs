@@ -15,6 +15,10 @@ public class MonsterController : MonoBehaviour
     // is it in danger? does it need to flee?
     private float stateComfort = 1; // 1=safe, 0=very danger
 
+    [HideInInspector]
+    public Vector3 stateEnemyVector;
+    [HideInInspector]
+    public Vector3 stateMoveVector;
 
     //======================================================================
     #region Unity Events
@@ -38,7 +42,7 @@ public class MonsterController : MonoBehaviour
     #region player commands
     public void CommandMoveTo(Vector3 pos)
     {
-        Debug.Log(pos);
+        //Debug.Log(pos);
         this.commandGivenPosition = pos;
         //StartCoroutine("stepMove");
 
@@ -49,9 +53,20 @@ public class MonsterController : MonoBehaviour
 
     }
 
-    void CommandUseSkill(int skill)
+    void CommandSkillStart(int skill)
     {
+        //Debug.Log("Command");
+        this.SendMessage("SkillStart", skill);
+    }
 
+    void CommandSkillStep(int skill)
+    {
+        this.SendMessage("SkillStep", skill);
+    }
+
+    void CommandSkillStop(int skill)
+    {
+        this.SendMessage("SkillStop", skill);
     }
     #endregion //player commands
     //======================================================================
@@ -70,8 +85,10 @@ public class MonsterController : MonoBehaviour
     {
         MonsterData data = this.GetComponent<MonsterData>();
 
-        Vector3 distance = this.transform.position - this.enemy.transform.position;
-        this.stateComfort = data.comfortZone.Evaluate(distance.magnitude / data.comfortZoneScale);
+        this.stateEnemyVector = this.enemy.transform.position - this.transform.position;
+        this.stateMoveVector = this.commandGivenPosition - this.transform.position;
+
+        this.stateComfort = data.comfortZone.Evaluate(this.stateEnemyVector.magnitude / data.comfortZoneScale);
 
     }
     /**
@@ -88,9 +105,7 @@ public class MonsterController : MonoBehaviour
      */
     private void Action()
     {
-
-        float hue = 0.25f * stateComfort;
-        this.transform.FindChild("Model").renderer.material.color = new HSBColor(hue, 1, 1, 1).ToColor();
+        this.stepDangerColor();
         this.stepMove();
     }
 
@@ -105,11 +120,10 @@ public class MonsterController : MonoBehaviour
 
         MonsterData data = this.GetComponent<MonsterData>();
 
-        Vector3 moveVector = this.commandGivenPosition - this.transform.position;
 
-        if (moveVector.magnitude > data.speed)
+        if (this.stateMoveVector.magnitude > data.movingSpeed)
         {
-            this.transform.position += moveVector.normalized * data.speed;
+            this.transform.position += this.stateMoveVector.normalized * data.movingSpeed;
         }
         else
         {
@@ -119,6 +133,13 @@ public class MonsterController : MonoBehaviour
 
         //this.transform.position = this.givenPosition;
 
+    }
+
+    private void stepDangerColor()
+    {
+
+        float hue = 0.25f * stateComfort;
+        this.transform.FindChild("Model").renderer.material.color = new HSBColor(hue, 1, 1, 1).ToColor();
     }
 
 

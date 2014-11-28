@@ -6,4 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/battle.unity
+    path: Assets/Scenes/MultiPlayerChoose.unity
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerConnect.unity

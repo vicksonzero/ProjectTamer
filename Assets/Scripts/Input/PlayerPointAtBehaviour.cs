@@ -16,9 +16,25 @@ public class PlayerPointAtBehaviour : MonoBehaviour {
 	
 	}
 
-    public void tellMove(int i, Vector3 pos)
+    public void tellMove(int monsterID, Vector3 pos)
     {
-        this.getMonsterById(i).SendMessage("CommandMoveTo", pos);
+        this.getMonsterById(monsterID).SendMessage("CommandMoveTo", pos);
+    }
+
+    public void tellSkillStart(int monsterID, int skillID)
+    {
+        //Debug.Log("PlayerController");
+        this.getMonsterById(monsterID).SendMessage("CommandSkillStart", skillID);
+    }
+
+    public void tellSkillStep(int monsterID, int skillID)
+    {
+        this.getMonsterById(monsterID).SendMessage("CommandSkillStep", skillID);
+    }
+
+    public void tellSkillStop(int monsterID, int skillID)
+    {
+        this.getMonsterById(monsterID).SendMessage("CommandSkillStop", skillID);
     }
 
     private GameObject getMonsterById(int i)

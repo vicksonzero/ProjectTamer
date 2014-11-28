@@ -32,7 +32,7 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
             this.p = hitInfo.point;
             positionMarker.transform.position = hitInfo.point;
 
-            this.player.GetComponent<PlayerPointAtBehaviour>().tellMove(0, hitInfo.point);
+            //this.player.GetComponent<PlayerPointAtBehaviour>().tellMove(0, hitInfo.point);
 
         }
         else
@@ -50,5 +50,26 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
     void OnGUI()
     {
         GUI.TextArea(new Rect(0, 0, 200, 200), this.p.ToString());
+    }
+
+    void OnIconMoveToDrag()
+    {
+        this.player.GetComponent<PlayerPointAtBehaviour>().tellMove(0, this.p);
+
+    }
+
+    void OnIconSkillDown(int skillID)
+    {
+        this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStart(0, skillID);
+    }
+
+    void OnIconSkillDrag(int skillID)
+    {
+        this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStep(0, skillID);
+    }
+
+    void OnIconSkillUp(int skillID)
+    {
+        this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStop(0, skillID);
     }
 }

@@ -9,8 +9,18 @@ public class MonsterData : MonoBehaviour {
     public float comfortZoneScale = 300;
     public AnimationCurve attackZone;   // 1 if easy to attack, 0 if cannot attack
 
-    public float speed = 2;
+    [Tooltip("Normal moving speed. can be overridden by other means")]
+    public float movingSpeed = 2;
 
+    [Tooltip("Max HP for the monster")]
+    public float hp = 100;
+
+    [Tooltip("every physical damage will be reduced by armour")]
+    public float armour = 2;
+
+    [Tooltip("type of monster. used to calculate damage and to learn skills. use MonsterData.types enum whenever possible")]
+    public int type = -1; // no element
+    public enum types { Water, Fire, Grass, Rock, Electric};
 
 
     private Transform[] debug_ranges;
@@ -52,7 +62,7 @@ public class MonsterData : MonoBehaviour {
     
     private void debugConfortUpdate()
     {
-        float interval = 1.0f / this.debug_ranges_count;
+        //float interval = 1.0f / this.debug_ranges_count;
         for (int i = 0; i < this.debug_ranges_count; i++)
         {
             this.debug_ranges[i].transform.position = this.transform.position + new Vector3(0, 10, 0);

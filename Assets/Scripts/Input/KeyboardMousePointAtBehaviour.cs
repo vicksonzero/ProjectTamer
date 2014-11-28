@@ -11,6 +11,9 @@ public class KeyboardMousePointAtBehaviour : MonoBehaviour
 
     public GameObject player;
 
+    private string stanceKey = "q";
+    private string[] skillsKey = { "w", "e", "r"};
+
 	// Use this for initialization
 	void Start () {
 	
@@ -44,18 +47,35 @@ public class KeyboardMousePointAtBehaviour : MonoBehaviour
                 this.player.GetComponent<PlayerPointAtBehaviour>().tellMove(1, hitInfo.point);
             }
 
-
-
-
-
-            //Send(CommandMoveTo)
-
             // don't edit from here:
         }
         else
         {
             // not hit
         }
+
+        if (Input.GetKeyDown(this.stanceKey))
+        {
+            //this.player.GetComponent<PlayerPointAtBehaviour>().
+        }
+        int len = this.skillsKey.Length;
+        for (int i = 0; i < len; i++)
+        {
+            if (Input.GetKeyDown(this.skillsKey[i]))
+            {
+                //Debug.Log("Keyboard");
+                this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStart(0,i);
+            }
+            if (Input.GetKey(this.skillsKey[i]))
+            {
+                this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStep(0, i);
+            }
+            if (Input.GetKeyUp(this.skillsKey[i]))
+            {
+                this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStop(0, i);
+            }
+        }
+
 
 	}
 
