@@ -6,6 +6,8 @@ public class BattleMessengerBehaviour : MonoBehaviour
 
     public OBattleMessage battleMessage;
 
+    public int[] chosenMonsters;
+
     #region Unity events
     void Awake()
     {
@@ -25,7 +27,27 @@ public class BattleMessengerBehaviour : MonoBehaviour
     #endregion //Unity events
 
     #region public methods
-    public void SetParam(OBattleMessage bm){
+
+    public void SelectMonster(int monsterID)
+    {
+        if (this.chosenMonsters.Length == 0)
+        {
+            this.chosenMonsters[0] = monsterID;
+        }
+        else
+        {
+            this.chosenMonsters[1] = monsterID;
+        }
+    }
+    public void SwapSelectedMonsters()
+    {
+        int i = this.chosenMonsters[0];
+        this.chosenMonsters[0] = this.chosenMonsters[1];
+        this.chosenMonsters[1] = i;
+    }
+
+    public void SetParam(OBattleMessage bm)
+    {
         this.battleMessage = bm;
     }
     #endregion public methods

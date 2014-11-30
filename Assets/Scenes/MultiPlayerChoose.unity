@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 97540420}
   - 131: {fileID: 97540419}
+  - 114: {fileID: 97540421}
   m_Layer: 0
   m_Name: IconChooseRock
   m_TagString: Untagged
@@ -119,8 +120,20 @@ Transform:
   m_LocalPosition: {x: .453125, y: .583333313, z: 1}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 406883786}
+  m_RootOrder: 2
+--- !u!114 &97540421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 97540418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751d166283b40684892f10b0666d1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 2
 --- !u!1 &387451792
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +218,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &406883785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406883786}
+  m_Layer: 0
+  m_Name: MonsterSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &406883786
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 406883785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1661518283}
+  - {fileID: 1759791423}
+  - {fileID: 97540420}
+  - {fileID: 1304824649}
+  - {fileID: 708373561}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &585089693
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +306,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 708373561}
   - 131: {fileID: 708373560}
+  - 114: {fileID: 708373562}
   m_Layer: 0
   m_Name: IconChooseWater
   m_TagString: Untagged
@@ -297,8 +343,20 @@ Transform:
   m_LocalPosition: {x: .770833313, y: .583333313, z: 1}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 406883786}
+  m_RootOrder: 4
+--- !u!114 &708373562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 708373559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751d166283b40684892f10b0666d1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 4
 --- !u!1 &757866415
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8730f080ec75a44583ebc79419bf823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenMonsters: 
 --- !u!4 &1171450307
 Transform:
   m_ObjectHideFlags: 0
@@ -407,6 +466,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1304824649}
   - 131: {fileID: 1304824648}
+  - 114: {fileID: 1304824650}
   m_Layer: 0
   m_Name: IconChooseElectric
   m_TagString: Untagged
@@ -443,8 +503,20 @@ Transform:
   m_LocalPosition: {x: .611979187, y: .583333313, z: 1}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 406883786}
+  m_RootOrder: 3
+--- !u!114 &1304824650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1304824647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751d166283b40684892f10b0666d1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 3
 --- !u!1 &1661518281
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +526,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1661518283}
   - 131: {fileID: 1661518282}
+  - 114: {fileID: 1661518284}
   m_Layer: 0
   m_Name: IconChooseFire
   m_TagString: Untagged
@@ -490,8 +563,20 @@ Transform:
   m_LocalPosition: {x: .135416672, y: .583333313, z: 1}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 406883786}
+  m_RootOrder: 0
+--- !u!114 &1661518284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661518281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751d166283b40684892f10b0666d1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 0
 --- !u!1 &1759791421
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +586,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1759791423}
   - 131: {fileID: 1759791422}
+  - 114: {fileID: 1759791424}
   m_Layer: 0
   m_Name: IconChooseGrass
   m_TagString: Untagged
@@ -537,5 +623,17 @@ Transform:
   m_LocalPosition: {x: .294270843, y: .583333313, z: 1}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 406883786}
+  m_RootOrder: 1
+--- !u!114 &1759791424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1759791421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751d166283b40684892f10b0666d1f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterID: 1
