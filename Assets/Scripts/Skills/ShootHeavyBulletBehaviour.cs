@@ -54,8 +54,24 @@ public class ShootHeavyBulletBehaviour : MonoBehaviour {
 
     public void SkillStep(int skillID)
     {
+        //Debug.Log("Skill");
         if (skillID != this.skillID) return;
+        //Debug.Log("in skill");
+        if (this.canShoot())
+        {
+            // set alarm for next canShoot
+            this.setAlarm();
 
+            // get enemyVector from other component
+            MonsterController controller = this.GetComponent<MonsterController>();
+            Vector3 enemyVector = controller.stateEnemyVector;
+            Transform b = Instantiate(
+                this.bullet,
+                this.transform.position + this.offset,
+                Quaternion.FromToRotation(Vector3.forward, enemyVector)
+            ) as Transform;
+            b.rigidbody.velocity = b.transform.forward * this.bulletSpeed;
+        }
 
     }
 
