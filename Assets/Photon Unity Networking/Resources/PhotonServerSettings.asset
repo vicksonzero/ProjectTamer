@@ -32,4 +32,9 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SetPosition
   - TaggedPlayer
+  - CommandMoveTo
+  - CommandPose
+  - CommandSkillStart
+  - CommandSkillStep
+  - CommandSkillStop
   DisableAutoOpenWizard: 0

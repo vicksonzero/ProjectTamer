@@ -6,12 +6,14 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
 
     public Transform cube;
     public float speed = 2;
-    private Vector3 p;
     public Transform positionMarker;
-    private bool[] buttonsHold;
-    private bool iconMoveToIsDragging;
     public int monsterID;
 
+
+    private Vector3 p;
+    private bool[] buttonsHold;
+    private bool iconMoveToIsDragging;
+    private int fingerMoveTo;
 
     public GameObject player;
 
@@ -26,17 +28,37 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        // tell monster to move to screen center
+        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        // tell monster to move to touch position
+        Ray ray;
+        if (Input.touchSupported)
+        {
+            Touch finger = Input.GetTouch(fingerMoveTo);
+            if ((finger.phase == TouchPhase.Ended || finger.phase == TouchPhase.Stationary))
+            {
+                this.iconMoveToIsDragging = false;
+            }
+            ray = Camera.main.ScreenPointToRay(finger.position);
+        }
+        else
+        {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
         RaycastHit hitInfo;
         int layerMask = 1 << 8;
-
-        bool rayhits = Physics.Raycast(ray, out hitInfo, Mathf.Infinity,layerMask);
-        if (rayhits)
+        if (this.iconMoveToIsDragging)
         {
-            this.p = hitInfo.point;
-            positionMarker.transform.position = hitInfo.point;
+            bool rayhits = Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask);
+            if (rayhits)
+            {
+                this.p = hitInfo.point;
+                positionMarker.transform.position = hitInfo.point;
+            }
+            else { }
+
+            this.OnIconMoveToDrag();
         }
-        else { }
         for (int i = 0; i < this.buttonsHold.Length; i++)
         {
             if (this.buttonsHold[i])
@@ -45,23 +67,23 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
             }
 
         }
-        if (this.iconMoveToIsDragging)
-        {
-            this.OnIconMoveToDrag();
-        }
 
 
 	}
 
-    void OnGUI()
-    {
-        GUI.TextArea(new Rect(0, 0, 200, 200), this.p.ToString());
-    }
+    //void OnGUI()
+    //{
+    //    GUI.TextArea(new Rect(0, 0, 200, 200), Input.GetTouch(fingerMoveTo).position.ToString() + Input.touches[Input.touchCount - 1].position.ToString());
+    //}
 
     public void OnIconMoveToDown()
     {
         this.iconMoveToIsDragging = true;
 
+        if (Input.touchSupported)
+        {
+            this.fingerMoveTo = Input.touches[Input.touchCount - 1].fingerId;
+        }
     }
 
     public void OnIconMoveToDrag()

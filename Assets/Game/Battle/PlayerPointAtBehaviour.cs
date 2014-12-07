@@ -16,25 +16,26 @@ public class PlayerPointAtBehaviour : MonoBehaviour {
 	
 	}
 
+
     public void tellMove(int monsterID, Vector3 pos)
     {
-        this.getMonsterById(monsterID).SendMessage("CommandMoveTo", pos);
+        this.getMonsterById(monsterID).GetComponent<PhotonView>().RPC("CommandMoveTo",PhotonTargets.MasterClient, pos);
     }
 
     public void tellSkillStart(int monsterID, int skillID)
     {
         //Debug.Log("PlayerController");
-        this.getMonsterById(monsterID).SendMessage("CommandSkillStart", skillID);
+        this.getMonsterById(monsterID).GetComponent<PhotonView>().RPC("CommandSkillStart", PhotonTargets.MasterClient, skillID);
     }
 
     public void tellSkillStep(int monsterID, int skillID)
     {
-        this.getMonsterById(monsterID).SendMessage("CommandSkillStep", skillID);
+        this.getMonsterById(monsterID).GetComponent<PhotonView>().RPC("CommandSkillStep", PhotonTargets.MasterClient, skillID);
     }
 
     public void tellSkillStop(int monsterID, int skillID)
     {
-        this.getMonsterById(monsterID).SendMessage("CommandSkillStop", skillID);
+        this.getMonsterById(monsterID).GetComponent<PhotonView>().RPC("CommandSkillStop", PhotonTargets.MasterClient, skillID);
     }
 
     private GameObject getMonsterById(int i)

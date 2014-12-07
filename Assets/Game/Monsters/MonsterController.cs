@@ -37,14 +37,15 @@ public class MonsterController : MonoBehaviour
 	// Update is called once per frame
     void Update()
     {
-        this.AIPerceive();
-        this.AIDecide();
-        this.Action();
+        if(PhotonNetwork.isMasterClient)this.AIPerceive();
+        if (PhotonNetwork.isMasterClient) this.AIDecide();
+        if (PhotonNetwork.isMasterClient) this.Action();
     }
 
     #endregion // Unity Events
     //======================================================================
     #region player commands
+    [RPC]
     public void CommandMoveTo(Vector3 pos)
     {
         //Debug.Log(pos);
@@ -52,23 +53,23 @@ public class MonsterController : MonoBehaviour
         //StartCoroutine("stepMove");
 
     }
-
+    [RPC]
     void CommandPose(string pose)
     {
 
     }
-
+    [RPC]
     void CommandSkillStart(int skill)
     {
         //Debug.Log("Command");
         this.SendMessage("SkillStart", skill);
     }
-
+    [RPC]
     void CommandSkillStep(int skill)
     {
         this.SendMessage("SkillStep", skill);
     }
-
+    [RPC]
     void CommandSkillStop(int skill)
     {
         this.SendMessage("SkillStop", skill);
