@@ -8,7 +8,8 @@ public class SkillFireworkBehaviour : MonoBehaviour
     public int skillID = -1;
 
     public Vector3 offset;
-    public float bulletSpeed = 100;
+
+    public Transform fireworkPrefab;
 
     [Tooltip("In seconds")]
     public float cooldown = 3;
@@ -34,22 +35,7 @@ public class SkillFireworkBehaviour : MonoBehaviour
     {
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
-        //Debug.Log("in skill");
-        if (this.canShoot())
-        {
-            // set alarm for next canShoot
-            this.setAlarm();
-
-            // get enemyVector from other component
-            MonsterController controller = this.GetComponent<MonsterController>();
-            Vector3 enemyVector = controller.stateEnemyVector;
-            Transform b = Instantiate(
-                this.bullet, 
-                this.transform.position + this.offset, 
-                Quaternion.FromToRotation(Vector3.forward,enemyVector)
-            ) as Transform;
-            b.rigidbody.velocity = b.transform.forward * this.bulletSpeed;
-        }
+        
     }
 
     public void SkillStep(int skillID)
@@ -61,18 +47,8 @@ public class SkillFireworkBehaviour : MonoBehaviour
         {
             // set alarm for next canShoot
             this.setAlarm();
-
-            // get enemyVector from other component
-            MonsterController controller = this.GetComponent<MonsterController>();
-            Vector3 enemyVector = controller.stateEnemyVector;
-            Transform b = Instantiate(
-                this.bullet,
-                this.transform.position + this.offset,
-                Quaternion.FromToRotation(Vector3.forward, enemyVector)
-            ) as Transform;
-            b.rigidbody.velocity = b.transform.forward * this.bulletSpeed;
+            this.createFirework(this.transform.position + this.offset);
         }
-
     }
 
     public void SkillStop(int skillID)
@@ -97,6 +73,10 @@ public class SkillFireworkBehaviour : MonoBehaviour
     {
         this.alarmStart = Time.time;
         this.alarmStop = Time.time + this.cooldown;
+    }
+    private void createFirework(Vector3 pos)
+    {
+        Instantiate(this.fireworkPrefab, pos, Quaternion.identity);
     }
     #endregion // private methods
 

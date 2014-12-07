@@ -18,7 +18,7 @@ public class KeyboardMousePointAtBehaviour : MonoBehaviour
 	// Use this for initialization
     void Start()
     {
-        this.monsterID = MatchmakerBehaviour.instance.monsterID;
+        this.monsterID = MatchmakerBehaviour.getMonsterID();
 	
 	}
 	

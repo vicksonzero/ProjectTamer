@@ -20,7 +20,7 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
 	void Start () {
         this.iconMoveToIsDragging = false;
         this.buttonsHold = new bool[3];
-        this.monsterID = MatchmakerBehaviour.instance.monsterID;
+        this.monsterID = MatchmakerBehaviour.getMonsterID();
 	}
 	
 	// Update is called once per frame
@@ -78,7 +78,6 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
 
     public void OnIconSkillDown(int skillID)
     {
-        GameObject.Find("MonsterB").transform.FindChild("NameTag").guiText.text = ":P";
         this.player.GetComponent<PlayerPointAtBehaviour>().tellSkillStart(this.monsterID, skillID);
         this.buttonsHold[skillID] = true;
     }

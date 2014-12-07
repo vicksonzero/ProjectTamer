@@ -12,6 +12,9 @@ public class MonsterData : MonoBehaviour {
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float movingSpeed = 2;
 
+    [Tooltip("Normal moving speed. can be overridden by other means")]
+    public float turningSpeed = 100;
+
     [Tooltip("Max HP for the monster")]
     public float hp = 100;
 

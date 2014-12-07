@@ -4,7 +4,9 @@ using System.Collections;
 [RequireComponent(typeof(MonsterData))]
 public class MonsterController : MonoBehaviour
 {
-
+    [HideInInspector]
+    public MonsterData data;
+    public int controllerID = -1;
     public Transform enemy;
     // the position it is told to go to, or stay.
     private Vector3 commandGivenPosition;
@@ -15,10 +17,13 @@ public class MonsterController : MonoBehaviour
     // is it in danger? does it need to flee?
     private float stateComfort = 1; // 1=safe, 0=very danger
 
+
     [HideInInspector]
     public Vector3 stateEnemyVector;
     [HideInInspector]
     public Vector3 stateMoveVector;
+
+    private bool doFaceEnemy = false;
 
     //======================================================================
     #region Unity Events
@@ -75,6 +80,7 @@ public class MonsterController : MonoBehaviour
     private void AIInit()
     {
         this.commandGivenPosition = this.transform.position;
+        this.data = this.GetComponent<MonsterData>();
     }
 
     /**
@@ -83,12 +89,11 @@ public class MonsterController : MonoBehaviour
      */
     private void AIPerceive()
     {
-        MonsterData data = this.GetComponent<MonsterData>();
 
         this.stateEnemyVector = this.enemy.transform.position - this.transform.position;
         this.stateMoveVector = this.commandGivenPosition - this.transform.position;
 
-        this.stateComfort = data.comfortZone.Evaluate(this.stateEnemyVector.magnitude / data.comfortZoneScale);
+        this.stateComfort = this.data.comfortZone.Evaluate(this.stateEnemyVector.magnitude / this.data.comfortZoneScale);
 
     }
     /**
@@ -97,7 +102,7 @@ public class MonsterController : MonoBehaviour
      */
     private void AIDecide()
     {
-
+        this.doFaceEnemy = true;
     }
 
     /**
@@ -107,6 +112,28 @@ public class MonsterController : MonoBehaviour
     {
         //this.stepDangerColor();
         this.stepMove();
+        if (this.doFaceEnemy)
+        {
+            this.stepTurnFaceEnemy();
+        }
+    }
+
+    private void stepTurnFaceEnemy()
+    {
+
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, Quaternion.LookRotation(this.stateEnemyVector,Vector3.up), this.data.turningSpeed * Time.deltaTime);
+
+        //Vector3 enemy2dDirection = this.stateEnemyVector;
+        //enemy2dDirection.y = 0;
+        //Vector3 my2dDirection = this.transform.rotation.eulerAngles;
+        //my2dDirection.y = 0;
+        //
+        //float rotAngle = Vector3.Angle(my2dDirection, enemy2dDirection);
+        //print(rotAngle);
+        //if(rotAngle>3) this.transform.Rotate(Vector3.up, rotAngle * Time.deltaTime);
+
+        //Quaternion newFaceRotation = Quaternion.Lerp(this.transform.rotation,Quaternion.Euler(this.stateEnemyVector),this.data.turningSpeed*Time.deltaTime);
+        //this.transform.rotation = newFaceRotation;
     }
 
 
