@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
+  - 114: {fileID: 11400000}
   - 23: {fileID: 2300000}
   - 136: {fileID: 13600000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: HeavyBullet
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.8267288, y: 19.0625687, z: 21.0221806}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 14.587429, y: 14.587429, z: 23.3398857}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,10 +67,10 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Mass: 5000
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -86,7 +86,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e0b99f9beb61a4cbbe696addbe3f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firework: {fileID: 400002, guid: 8deb0b9406ac0ee4a8feba02a84a35b4, type: 2}
+  hitEffectPrefab: {fileID: 400002, guid: b7c128e37a46dca449e14eab4953ef1f, type: 2}
+  target: {fileID: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,8 +119,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: .280000001
-  m_Height: 1.60000002
+  m_Radius: .225587204
+  m_Height: 1.2763592
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000

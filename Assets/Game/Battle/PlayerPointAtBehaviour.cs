@@ -8,7 +8,8 @@ public class PlayerPointAtBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        this.monster[0].GetComponent<MonsterController>().enemy = this.monster[1].transform;
+        this.monster[1].GetComponent<MonsterController>().enemy = this.monster[0].transform;
 	}
 	
 	// Update is called once per frame

@@ -22,6 +22,8 @@ public class MonsterController : MonoBehaviour
     public Vector3 stateEnemyVector;
     [HideInInspector]
     public Vector3 stateMoveVector;
+    [HideInInspector]
+    public bool stateCanWalk = true;
 
     private bool doFaceEnemy = false;
 
@@ -43,6 +45,12 @@ public class MonsterController : MonoBehaviour
     }
 
     #endregion // Unity Events
+    #region Messages
+    public void takeDamage(float[] damageChart)
+    {
+
+    }
+    #endregion Messages
     //======================================================================
     #region player commands
     [RPC]
