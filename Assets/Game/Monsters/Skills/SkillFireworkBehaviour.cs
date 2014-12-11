@@ -76,7 +76,7 @@ public class SkillFireworkBehaviour : MonoBehaviour
     }
     private void createFirework(Vector3 pos)
     {
-        Instantiate(this.fireworkPrefab, pos, Quaternion.identity);
+        PhotonNetwork.Instantiate(this.fireworkPrefab.name, pos, Quaternion.identity,0);
     }
     #endregion // private methods
 

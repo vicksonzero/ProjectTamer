@@ -17,7 +17,7 @@ public class AutoDieBehaviour : MonoBehaviour
         // so sad to die on your birthday
         if (Time.time >= this.birthday)
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
         }
 	}
 }
