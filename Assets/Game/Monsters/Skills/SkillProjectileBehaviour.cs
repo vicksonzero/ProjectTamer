@@ -2,20 +2,8 @@
 using System.Collections;
 
 [RequireComponent(typeof(MonsterController))]
-public class SkillProjectileBehaviour : MonoBehaviour
+public class SkillProjectileBehaviour : SkillsBehaviour
 {
-
-    [Header("Skills basics")]
-    public int skillID = -1;
-    [Tooltip("whether or not the monster continues to attack as long as the skill button is pressed")]
-    public bool semiauto = false;
-    [Tooltip("In seconds")]
-    public float cooldown = 1;
-    [Tooltip("PP as in pokemon. limited times to use the skill in the whole tournament. a portion of the remaining PP is regenerated after the battle")]
-    public int pP = 20;
-    [HideInInspector]
-    public int ppRemaining;
-    public float range = 50;
     
     [Header("Implementation")]
     public ProjectileBehaviour bullet;
@@ -23,9 +11,6 @@ public class SkillProjectileBehaviour : MonoBehaviour
     public Vector3[] offsets = new Vector3[1];
     public float bulletSpeed = 100;
     public float bulletSteerSpeed = 100;
-    [Tooltip("damages with damage type \n(0=normal, 1=Fire, \n2=Water, 3=Grass, \n4=Electric, 5=Rock)\n\nDamage is done when bullet hits target")]
-    public float[] damages = new float[6];
-    public GameObject[] debuffs;
 
     
 
@@ -45,7 +30,7 @@ public class SkillProjectileBehaviour : MonoBehaviour
 
     #region Messages
     // on press action button
-    public void SkillStart(int skillID)
+    public override void SkillStart(int skillID)
     {
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
@@ -58,7 +43,7 @@ public class SkillProjectileBehaviour : MonoBehaviour
         }
     }
 
-    public void SkillStep(int skillID)
+    public override void SkillStep(int skillID)
     {
         if (!this.semiauto) return;
         if (skillID != this.skillID) return;
@@ -73,7 +58,7 @@ public class SkillProjectileBehaviour : MonoBehaviour
 
     }
 
-    public void SkillStop(int skillID)
+    public override void SkillStop(int skillID)
     {
         if (skillID != this.skillID) return;
 
@@ -82,7 +67,7 @@ public class SkillProjectileBehaviour : MonoBehaviour
     #endregion // Messages
 
     #region public methods
-    public void init()
+    public override void init()
     {
         this.controller = this.GetComponent<MonsterController>();
         this.ppRemaining = this.pP;
@@ -91,7 +76,7 @@ public class SkillProjectileBehaviour : MonoBehaviour
             print("invalid skillID");
         }
     }
-    public float GetCooldown()
+    public override float GetCooldownPercent()
     {
         return (Time.time-this.alarmStart)/(this.alarmStop - this.alarmStart);
     }

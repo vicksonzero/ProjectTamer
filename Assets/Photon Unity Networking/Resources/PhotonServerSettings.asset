@@ -37,4 +37,7 @@ MonoBehaviour:
   - CommandSkillStart
   - CommandSkillStep
   - CommandSkillStop
+  - tellMove
+  - tellSkillStart
+  - tellSkillStop
   DisableAutoOpenWizard: 0

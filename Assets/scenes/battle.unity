@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTrackableName: letsPlay
-  mPreviousScale: {x: 205, y: 205, z: 205}
+  mPreviousScale: {x: 205.423996, y: 205.423996, z: 205.423996}
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: QCAR/ProjectTamer.xml
@@ -888,6 +888,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1802bd041cd9f384783d395eea017742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subId: 3
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
   monster:
   - {fileID: 350104709}
   - {fileID: 871825005}
@@ -1225,11 +1234,6 @@ MonoBehaviour:
   pP: 20
   ppRemaining: 0
   range: 150
-  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
-  offsets:
-  - {x: 0, y: 30, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
   damages:
   - 0
   - 0
@@ -1238,6 +1242,11 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
+  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
+  offsets:
+  - {x: 0, y: 30, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!114 &350104714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,6 +1265,14 @@ MonoBehaviour:
   pP: 20
   ppRemaining: 0
   range: 150
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
   bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
   offsets:
   - {x: 0, y: 50, z: -40}
@@ -1265,14 +1282,6 @@ MonoBehaviour:
   - {x: -30, y: 10, z: -40}
   bulletSpeed: 80
   bulletSteerSpeed: 1.60000002
-  damages:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  debuffs: []
 --- !u!114 &350104715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,9 +1299,6 @@ MonoBehaviour:
   pP: 20
   ppRemaining: 1
   range: 50
-  blast: {fileID: 11400000, guid: 841e517e25b338a47b57ca087427189e, type: 2}
-  offset: {x: 0, y: 24.2999992, z: 16.7999992}
-  blastDirection: {x: 0, y: 0, z: 1}
   damages:
   - 0
   - 0
@@ -1301,6 +1307,9 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
+  blast: {fileID: 11400000, guid: 841e517e25b338a47b57ca087427189e, type: 2}
+  offset: {x: 0, y: 24.2999992, z: 16.7999992}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &350104716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2279,11 +2288,6 @@ MonoBehaviour:
   pP: 20
   ppRemaining: 0
   range: 50
-  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
-  offsets:
-  - {x: 0, y: 0, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
   damages:
   - 0
   - 0
@@ -2292,6 +2296,11 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
+  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!114 &871825012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,11 +2318,6 @@ MonoBehaviour:
   pP: 20
   ppRemaining: 0
   range: 50
-  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
-  offsets:
-  - {x: 0, y: 0, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
   damages:
   - 0
   - 0
@@ -2322,6 +2326,11 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
+  bullet: {fileID: 11400000, guid: 67cb1d73b710b864caeffd3c20e48279, type: 2}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!65 &871825013
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -2594,6 +2594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIText: {fileID: 709413545}
   cameraSet: {fileID: 1116029890}
+  versionNumber: 0.1.1s
 --- !u!4 &1045572464
 Transform:
   m_ObjectHideFlags: 0

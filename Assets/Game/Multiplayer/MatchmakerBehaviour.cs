@@ -6,12 +6,13 @@ public class MatchmakerBehaviour : MonoBehaviour {
 
     public Text uIText;
     public Camera cameraSet;
+    public string versionNumber = "0.1.1";
 
 
 	// Use this for initialization
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings("0.1");
+        PhotonNetwork.ConnectUsingSettings(this.versionNumber);
         PhotonNetwork.logLevel = PhotonLogLevel.Full;
         //PhotonNetworkingMessage
 
