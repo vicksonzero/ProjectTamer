@@ -4,10 +4,15 @@ using System.Collections;
 public class MonsterData : MonoBehaviour {
 
 
-    // favourite distance
-    public AnimationCurve comfortZone;   // 1 if safe, 0 if danger
-    public float comfortZoneScale = 300;
-    public AnimationCurve attackZone;   // 1 if easy to attack, 0 if cannot attack
+    [Tooltip("Max HP for the monster")]
+    public float hp = 1000;
+
+    [Tooltip("every physical damage will be reduced by armour")]
+    public float armour = 0;
+
+    [Tooltip("type of monster. used to calculate damage and to learn skills. use MonsterData.types enum whenever possible")]
+    public int type = -1; // no element
+    public enum types { Water, Fire, Grass, Rock, Electric};
 
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float movingSpeed = 2;
@@ -15,16 +20,12 @@ public class MonsterData : MonoBehaviour {
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float turningSpeed = 100;
 
-    [Tooltip("Max HP for the monster")]
-    public float hp = 100;
 
-    [Tooltip("every physical damage will be reduced by armour")]
-    public float armour = 2;
 
-    [Tooltip("type of monster. used to calculate damage and to learn skills. use MonsterData.types enum whenever possible")]
-    public int type = -1; // no element
-    public enum types { Water, Fire, Grass, Rock, Electric};
-
+    // favourite distance
+    public AnimationCurve comfortZone;   // 1 if safe, 0 if danger
+    public float comfortZoneScale = 300;
+    public AnimationCurve attackZone;   // 1 if easy to attack, 0 if cannot attack
 
     private Transform[] debug_ranges;
     private int debug_ranges_count = 20;

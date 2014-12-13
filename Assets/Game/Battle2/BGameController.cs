@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SGameCreatePilot))]
 public class BGameController : MonoBehaviour {
 
 	// Use this for initialization
@@ -12,4 +13,7 @@ public class BGameController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+
+
 }
