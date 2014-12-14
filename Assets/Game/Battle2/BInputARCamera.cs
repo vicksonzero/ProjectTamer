@@ -22,7 +22,7 @@ public class BInputARCamera : MonoBehaviour
         // get where the mouse is clicking
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
-        int layerMask = 1 << 8;
+        int layerMask = 1 << 8; // 8th layer
 
         bool rayHits = Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask);
         if (rayHits)

@@ -260,9 +260,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980ec88c45a7832408233f1fc5b83171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
+  controllerID: -1
   enemy: {fileID: 0}
   stateEnemyVector: {x: 0, y: 0, z: 0}
   stateMoveVector: {x: 0, y: 0, z: 0}
+  stateCanWalk: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,6 +277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  hp: 100
+  armour: 2
+  type: 0
+  movingSpeed: 1
+  turningSpeed: 100
   comfortZone:
     serializedVersion: 2
     m_Curve:
@@ -310,12 +319,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  movingSpeed: 1
-  hp: 100
-  armour: 2
-  type: 0
-  debugCircles: {fileID: 400000, guid: 9454bcbde1f61d6489ecc4262edc6a5a, type: 2}
-  debugComfort: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,10 +331,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  offset: {x: 0, y: 30, z: 0}
-  bullet: {fileID: 400000, guid: 938d5b9c3743e9f418da9073a67d3e3c, type: 2}
-  bulletSpeed: 100
+  semiauto: 0
   cooldown: .300000012
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  bullet: {fileID: 0}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,10 +361,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  offset: {x: 0, y: 0, z: 0}
-  bullet: {fileID: 0}
-  bulletSpeed: 100
+  semiauto: 0
   cooldown: 1
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  bullet: {fileID: 0}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -360,10 +391,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  offset: {x: 0, y: 0, z: 0}
-  bullet: {fileID: 0}
-  bulletSpeed: 100
+  semiauto: 0
   cooldown: 1
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  bullet: {fileID: 0}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

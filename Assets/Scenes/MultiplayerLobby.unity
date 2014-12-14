@@ -219,7 +219,7 @@ RectTransform:
   m_Children:
   - {fileID: 415106429}
   m_Father: {fileID: 1587282703}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .0588235296}
+  m_Color: {r: 1, g: 1, b: 1, a: .286274523}
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1163,7 +1163,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 784121134}
   m_Father: {fileID: 1587282703}
   m_RootOrder: 0
 --- !u!1 &495347487
@@ -1469,7 +1470,7 @@ Transform:
   m_Children:
   - {fileID: 2052835053}
   m_Father: {fileID: 1587282703}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &559271978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,7 +1619,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106829}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1830450920}
   m_Father: {fileID: 853611721}
   m_RootOrder: 0
 --- !u!1 &585089693
@@ -2078,7 +2080,7 @@ GameObject:
   - 114: {fileID: 784121136}
   - 114: {fileID: 784121135}
   m_Layer: 5
-  m_Name: PanelMonsterCard
+  m_Name: CanvasMonsterCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2090,13 +2092,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 784121133}
-  m_LocalRotation: {x: 0, y: .131920367, z: 0, w: .99126035}
-  m_LocalPosition: {x: 0, y: 0, z: 700}
+  m_LocalRotation: {x: 0, y: .131920382, z: 0, w: .99126035}
+  m_LocalPosition: {x: 0, y: 0, z: 700.000183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 378815170}
-  m_Father: {fileID: 1587282703}
-  m_RootOrder: 1
+  m_Father: {fileID: 450291282}
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 170, y: 47}
@@ -2301,7 +2303,6 @@ Transform:
   - {fileID: 575618730}
   - {fileID: 369561522}
   - {fileID: 1756397237}
-  - {fileID: 1830450920}
   m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!1 &858183312
@@ -3017,7 +3018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8730f080ec75a44583ebc79419bf823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterList: {fileID: 11400000, guid: 42164e76b578f86498ed46cc13b87384, type: 2}
+  monsterList: {fileID: 11400034, guid: a394c3be38097f94e9df105b919b44b9, type: 2}
   monsterIsSelected: 
   monstersAvaliable: 0
   chosenMonsters: 0000000000000000
@@ -3730,7 +3731,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450291282}
-  - {fileID: 784121134}
   - {fileID: 559271977}
   - {fileID: 129094377}
   m_Father: {fileID: 0}
@@ -4133,8 +4133,8 @@ RectTransform:
   - {fileID: 1694599222}
   - {fileID: 1397322558}
   - {fileID: 1498384486}
-  m_Father: {fileID: 853611721}
-  m_RootOrder: 3
+  m_Father: {fileID: 575618730}
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}

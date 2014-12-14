@@ -87,6 +87,6 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     }
     #endregion public methods
 
-} 
+}
 
 
