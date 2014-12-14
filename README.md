@@ -17,4 +17,7 @@ Augmented Reality monster battle game
 4. first one is stance: `aggressive`, `defensive` or `evasive`
 5. press the other command buttons to use powerful skills!
 
-Created by @vicksonzero, Micky and Emmanuel as EL639 Videogames Design (2014/2015 autumn term) Group Project
+Created by [@vicksonzero][1], Micky and Emmanuel as EL639 Videogames Design (2014/2015 autumn term) Group Project
+
+
+[1]: https://github.com/vicksonzero
