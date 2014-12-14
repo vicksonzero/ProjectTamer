@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
+
+[RequireComponent(typeof(MonsterSelectNetworkBehaviour))]
 public class MonsterSelectControlBehaviour : MonoBehaviour
 {
 
@@ -14,9 +17,19 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     public Transform padMain;
     public Transform padSupp;
 
-    public int[] chosenMonsters = new int[2]{-1,-1};
+    public int[][] chosenMonsters;
+
+    public MatchmakerBehaviour matchMaker;
+
+
 
     #region Unity events
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+
+    }
 
 	// Use this for initialization
     void Start()
@@ -24,6 +37,13 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
         this.battleMessage = new OBattleMessage();
         this.monsterIsSelected = new bool[this.monsterList.list.Length]; // default is false
         this.monstersAvaliable = this.monsterList.list.Length; // default is false
+
+
+
+        this.chosenMonsters =new int[2][];
+        this.chosenMonsters[0] = new int[2] { -1, -1 };
+        this.chosenMonsters[1] = new int[2] { -1, -1 };
+
         print("monster list length: " + this.monsterList.list.Length + ", array: " + this.monsterIsSelected);
 	}
 	
@@ -46,20 +66,20 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
      */
     public void SelectMonster(int index, int monsterID)
     {
-        if (index < 0 || index > this.chosenMonsters.Length)
+        if (index < 0 || index > this.chosenMonsters[0].Length)
         {
-            if (this.chosenMonsters.Length == 0)
+            if (this.chosenMonsters[0].Length == 0)
             {
-                this.chosenMonsters[0] = monsterID;
+                this.chosenMonsters[0][0] = monsterID;
             }
             else
             {
-                this.chosenMonsters[1] = monsterID;
+                this.chosenMonsters[0][1] = monsterID;
             }
         }
         else
         {
-            this.chosenMonsters[index] = monsterID;
+            this.chosenMonsters[0][index] = monsterID;
         }
         this.monsterIsSelected[monsterID] = true;
         this.monstersAvaliable--;
@@ -67,14 +87,14 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     }
     public void SwapSelectedMonsters()
     {
-        int i = this.chosenMonsters[0];
-        this.chosenMonsters[0] = this.chosenMonsters[1];
-        this.chosenMonsters[1] = i;
+        int i = this.chosenMonsters[0][0];
+        this.chosenMonsters[0][0] = this.chosenMonsters[0][1];
+        this.chosenMonsters[0][1] = i;
         this.onMonsterSelected();
     }
     public void onMonsterSelected()
     {
-        print("chosen main" + this.chosenMonsters[0].ToString() + " supp" + this.chosenMonsters[1].ToString());
+        print("chosen main" + this.chosenMonsters[0][0].ToString() + " supp" + this.chosenMonsters[0][1].ToString());
         this.updateMonsterModel();
     }
 
@@ -83,10 +103,33 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
         this.battleMessage = bm;
     }
 
-    public void startBattle()
+    public void setClientIsReady(bool isIt)
     {
-        PhotonNetwork.LoadLevel("Battle");
+        this.matchMaker.multiplayerState = MatchmakerBehaviour.MultiplayerStates.masterReady;
+    }
 
+    public void readyButtonHandler()
+    {
+        if(this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.masterReady){
+            this.startBattle();
+        }else if(this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.client){
+            print("hihi");
+            this.readyBattle();
+        }
+    }
+
+    private void readyBattle()
+    {
+        print("hi");
+        this.GetComponent<MonsterSelectNetworkBehaviour>().clientReady(this.chosenMonsters[0][0],this.chosenMonsters[0][1]);
+        this.matchMaker.multiplayerState = MatchmakerBehaviour.MultiplayerStates.clientReady;
+    }
+    private void startBattle()
+    {
+        if (this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.masterReady)
+        {
+            this.GetComponent<MonsterSelectNetworkBehaviour>().masterSaysStartGame();
+        }
     }
     
     #endregion public methods
@@ -95,8 +138,8 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
 
     private void updateMonsterModel()
     {
-        if (this.chosenMonsters[0] != -1) this.setModelToPad(this.padMain, this.chosenMonsters[0]);
-        if (this.chosenMonsters[1] != -1) this.setModelToPad(this.padSupp, this.chosenMonsters[1]);
+        if (this.chosenMonsters[0][0] != -1) this.setModelToPad(this.padMain, this.chosenMonsters[0][0]);
+        if (this.chosenMonsters[0][1] != -1) this.setModelToPad(this.padSupp, this.chosenMonsters[0][1]);
     }
     private void setModelToPad(Transform pad, int monsterID)
     {

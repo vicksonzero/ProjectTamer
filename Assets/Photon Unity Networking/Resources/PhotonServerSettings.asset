@@ -40,4 +40,6 @@ MonoBehaviour:
   - tellMove
   - tellSkillStart
   - tellSkillStop
+  - receiveClientMonsterChoice
+  - startGame
   DisableAutoOpenWizard: 0

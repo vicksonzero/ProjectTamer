@@ -6,7 +6,41 @@ public class MatchmakerBehaviour : MonoBehaviour {
 
     public Text uIText;
     public Camera cameraSet;
-    public string versionNumber = "0.1.1";
+    public string versionNumber = "0.1.2";
+
+    public RectTransform startButton;
+
+    private  MultiplayerStates _multiplayerState;
+    [HideInInspector]
+    public MultiplayerStates multiplayerState{
+        get
+        {
+            return this._multiplayerState;
+        }
+        set
+        {
+            this._multiplayerState = value;
+            switch (this._multiplayerState)
+            {
+                case MultiplayerStates.masterWaiting:
+                    this.startButton.Find("Text").GetComponent<Text>().text = "Waiting for client...";
+                    break;
+                case MultiplayerStates.masterReady:
+                    this.startButton.Find("Text").GetComponent<Text>().text = "Start Game!";
+                    break;
+                case MultiplayerStates.client:
+                    this.startButton.Find("Text").GetComponent<Text>().text = "Ready!";
+                    break;
+                case MultiplayerStates.clientReady:
+                    this.startButton.Find("Text").GetComponent<Text>().text = "Waiting for master...";
+                    break;
+                default:
+                    this.startButton.Find("Text").GetComponent<Text>().text = "Error occurred with _multiplayerState";
+                    break;
+            }
+        }
+    }
+    public enum MultiplayerStates { client, clientReady, masterWaiting, masterReady };
 
 
 	// Use this for initialization
@@ -43,6 +77,14 @@ public class MatchmakerBehaviour : MonoBehaviour {
 
     void OnJoinedRoom()
     {
+        if (PhotonNetwork.isMasterClient)
+        {
+            this.multiplayerState = MultiplayerStates.masterWaiting;
+        }
+        else
+        {
+            this.multiplayerState = MultiplayerStates.client;
+        }
         cameraSet.GetComponent<multiplayerCameraBehaviour>().nextScreen();
     }
     public static int getMonsterID()
