@@ -11,6 +11,9 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     [HideInInspector]
     public int monstersAvaliable = 0;
 
+    public Transform padMain;
+    public Transform padSupp;
+
     public int[] chosenMonsters = new int[2]{-1,-1};
 
     #region Unity events
@@ -72,7 +75,7 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     public void onMonsterSelected()
     {
         print("chosen main" + this.chosenMonsters[0].ToString() + " supp" + this.chosenMonsters[1].ToString());
-
+        this.updateMonsterModel();
     }
 
     public void SetParam(OBattleMessage bm)
@@ -85,7 +88,37 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
         PhotonNetwork.LoadLevel("Battle");
 
     }
+    
     #endregion public methods
+
+    #region private methods
+
+    private void updateMonsterModel()
+    {
+        if (this.chosenMonsters[0] != -1) this.setModelToPad(this.padMain, this.chosenMonsters[0]);
+        if (this.chosenMonsters[1] != -1) this.setModelToPad(this.padSupp, this.chosenMonsters[1]);
+    }
+    private void setModelToPad(Transform pad, int monsterID)
+    {
+        // clear things in the pad
+        for (int i = 0; i < pad.childCount; i++)
+        {
+            Destroy(pad.GetChild(i).gameObject);
+        }
+
+        GameObject monster = this.monsterList.list[monsterID];
+
+        Transform model = monster.transform.FindChild("_normalized_model");
+        Transform go_model = Instantiate(model, pad.transform.position, Quaternion.identity) as Transform;
+
+        go_model.localScale = new Vector3(4, 4, 4);
+        go_model.Rotate(0, 90, 0);
+        go_model.parent = pad;
+
+    }
+
+    #endregion private methods
+
 
 }
 
