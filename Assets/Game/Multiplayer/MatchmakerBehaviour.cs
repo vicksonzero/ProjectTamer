@@ -7,6 +7,7 @@ public class MatchmakerBehaviour : MonoBehaviour {
     public Text uIText;
     public Camera cameraSet;
     public string versionNumber = "0.1.2";
+    public bool solo = false;
 
     public RectTransform startButton;
 
@@ -54,7 +55,7 @@ public class MatchmakerBehaviour : MonoBehaviour {
 	void Update () {
         //GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
         this.uIText.text = PhotonNetwork.connectionStateDetailed.ToString();
-        print(this.uIText.text);
+        //print(this.uIText.text);
 	}
     void OnGUI()
     {
@@ -77,13 +78,16 @@ public class MatchmakerBehaviour : MonoBehaviour {
 
     void OnJoinedRoom()
     {
-        if (PhotonNetwork.isMasterClient)
-        {
-            this.multiplayerState = MultiplayerStates.masterWaiting;
+        if (this.solo){
+            this.multiplayerState = MultiplayerStates.masterReady;
         }
-        else
-        {
-            this.multiplayerState = MultiplayerStates.client;
+        else{
+            if (PhotonNetwork.isMasterClient){
+                this.multiplayerState = MultiplayerStates.masterWaiting;
+            }
+            else{
+                this.multiplayerState = MultiplayerStates.client;
+            }
         }
         cameraSet.GetComponent<multiplayerCameraBehaviour>().nextScreen();
     }
