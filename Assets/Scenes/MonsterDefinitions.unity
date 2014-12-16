@@ -294,7 +294,7 @@ MonoBehaviour:
   - 0
   debuffs: []
   effectPrefab: {fileID: 0}
-  spawnAt: 0
+  spawnAt: 1
   offsets:
   - {x: 0, y: 0, z: 0}
 --- !u!114 &251105833
@@ -364,11 +364,9 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
+  crushEffect: {fileID: 0}
+  crushSpeed: 100
+  crushSteerSpeed: 100
 --- !u!114 &251105835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +385,7 @@ MonoBehaviour:
   armour: 0
   type: 3
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -669,7 +668,7 @@ Transform:
   - {fileID: 1681280459}
   - {fileID: 2038220275}
   m_Father: {fileID: 974409392}
-  m_RootOrder: 0
+  m_RootOrder: 4
 --- !u!114 &925300949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,6 +702,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &925300950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,6 +772,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &925300952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,6 +791,7 @@ MonoBehaviour:
   armour: 0
   type: 0
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -811,6 +813,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 974409392}
+  - 114: {fileID: 974409393}
   m_Layer: 0
   m_Name: _MonsterDefinitions
   m_TagString: Untagged
@@ -828,13 +831,31 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 925300948}
-  - {fileID: 1594445970}
-  - {fileID: 251105831}
-  - {fileID: 1518541264}
   - {fileID: 1835703625}
+  - {fileID: 1518541264}
+  - {fileID: 251105831}
+  - {fileID: 1594445970}
+  - {fileID: 925300948}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &974409393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400034, guid: a394c3be38097f94e9df105b919b44b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 806484200}
+  m_GameObject: {fileID: 974409391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c4f8ae6e4f3a74cbd12af4cf9dfc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list:
+  - {fileID: 1835703624}
+  - {fileID: 1518541263}
+  - {fileID: 251105830}
+  - {fileID: 1594445969}
+  - {fileID: 925300947}
 --- !u!1 &1004848434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1103,7 @@ Transform:
   - {fileID: 1597915692}
   - {fileID: 723895636}
   m_Father: {fileID: 974409392}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!114 &1518541265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1230,7 @@ MonoBehaviour:
   armour: 0
   type: 2
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1231,6 +1253,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1594445970}
   - 114: {fileID: 1594445971}
+  - 114: {fileID: 1594445974}
+  - 114: {fileID: 1594445973}
+  - 114: {fileID: 1594445972}
   m_Layer: 0
   m_Name: MonsterDefinition_Sizz
   m_TagString: Untagged
@@ -1251,7 +1276,7 @@ Transform:
   - {fileID: 1695219189}
   - {fileID: 1507914641}
   m_Father: {fileID: 974409392}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!114 &1594445971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1295,7 @@ MonoBehaviour:
   armour: 0
   type: 4
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1283,6 +1309,112 @@ MonoBehaviour:
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1594445972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400040, guid: a394c3be38097f94e9df105b919b44b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 806484200}
+  m_GameObject: {fileID: 1594445969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a083e202171b5d14daad6dbba58cb112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillID: 2
+  name: Thunger Charge
+  description: Wraps itself with static charges, and crush towards the enemy, dealing
+    Electric damage.
+  semiauto: 0
+  channelTime: 0
+  skillTime: 0
+  recoveryTime: 0
+  cooldown: 1
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  crushEffect: {fileID: 0}
+  crushSpeed: 100
+  crushSteerSpeed: 100
+--- !u!114 &1594445973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400038, guid: a394c3be38097f94e9df105b919b44b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 806484200}
+  m_GameObject: {fileID: 1594445969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb011c0afaabf24dbd738c03e116fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillID: 1
+  name: Thunder Strike
+  description: Calls upon thunde from the sky, dealing massive Electric damage.
+  semiauto: 0
+  channelTime: 0
+  skillTime: 0
+  recoveryTime: 0
+  cooldown: 1
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  effectPrefab: {fileID: 0}
+  spawnAt: 1
+  offsets:
+  - {x: 0, y: 0, z: 0}
+--- !u!114 &1594445974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400036, guid: a394c3be38097f94e9df105b919b44b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 806484200}
+  m_GameObject: {fileID: 1594445969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c39d122b435c9b24ea7fbc22ebdca86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillID: 0
+  name: Slap
+  description: Slaps enemy with its long fins, dealing normal damage
+  semiauto: 0
+  channelTime: 0
+  skillTime: 0
+  recoveryTime: 0
+  cooldown: 1
+  pP: 20
+  ppRemaining: 0
+  range: 50
+  damages:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  debuffs: []
+  bullet: {fileID: 0}
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  bulletSpeed: 100
+  bulletSteerSpeed: 100
 --- !u!1 &1597915691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1607,7 @@ Transform:
   - {fileID: 1004848435}
   - {fileID: 414795356}
   m_Father: {fileID: 974409392}
-  m_RootOrder: 4
+  m_RootOrder: 0
 --- !u!114 &1835703626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,6 +1713,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &1835703629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1599,6 +1732,7 @@ MonoBehaviour:
   armour: 0
   type: 1
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:

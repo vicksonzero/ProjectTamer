@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(MonsterController))]
 public class SkillProjectileBehaviour : SkillsBehaviour
 {
     

@@ -17,6 +17,8 @@ public class MonsterData : MonoBehaviour {
 
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float movingSpeed = 2;
+    [HideInInspector]
+    public float sqMovingSpeed = 2;
 
     [Tooltip("Normal turning speed. can be overridden by other means")]
     public float turningSpeed = 100;
@@ -29,5 +31,10 @@ public class MonsterData : MonoBehaviour {
     public AnimationCurve comfortZone;   // 1 if safe, 0 if danger
     public float comfortZoneScale = 300;
     public AnimationCurve attackZone;   // 1 if easy to attack, 0 if cannot attack
+
+    void start()
+    {
+        this.sqMovingSpeed = this.movingSpeed * this.movingSpeed;
+    }
 
 }

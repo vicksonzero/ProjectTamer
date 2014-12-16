@@ -42,4 +42,10 @@ MonoBehaviour:
   - tellSkillStop
   - receiveClientMonsterChoice
   - startGame
+  - NetMove
+  - NetSkillStart
+  - NetSkillStep
+  - NetSkillStop
+  - receiveMasterClientMonsterChoice
+  - createPilots
   DisableAutoOpenWizard: 0

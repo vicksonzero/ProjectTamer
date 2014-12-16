@@ -2658,8 +2658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIText: {fileID: 709413545}
   cameraSet: {fileID: 1116029890}
-  versionNumber: 0.1.1s
-  solo: 1
+  versionNumber: 0.1.0
+  solo: 0
   startButton: {fileID: 345021841}
 --- !u!4 &1045572464
 Transform:

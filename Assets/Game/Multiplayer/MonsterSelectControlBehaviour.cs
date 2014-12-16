@@ -113,14 +113,12 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
         if(this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.masterReady){
             this.startBattle();
         }else if(this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.client){
-            print("hihi");
             this.readyBattle();
         }
     }
 
     private void readyBattle()
     {
-        print("hi");
         this.GetComponent<MonsterSelectNetworkBehaviour>().clientReady(this.chosenMonsters[0][0],this.chosenMonsters[0][1]);
         this.matchMaker.multiplayerState = MatchmakerBehaviour.MultiplayerStates.clientReady;
     }
@@ -128,7 +126,7 @@ public class MonsterSelectControlBehaviour : MonoBehaviour
     {
         if (this.matchMaker.multiplayerState == MatchmakerBehaviour.MultiplayerStates.masterReady)
         {
-            this.GetComponent<MonsterSelectNetworkBehaviour>().masterSaysStartGame();
+            this.GetComponent<MonsterSelectNetworkBehaviour>().masterSaysStartGame(this.chosenMonsters[0][0], this.chosenMonsters[0][1]);
         }
     }
     

@@ -9,7 +9,7 @@ public class BInputKeyboardMouse : MonoBehaviour {
     public BPlayerController playerController;
     public int monsterID;
 
-    private string keyAnotherPlayer = "shift";
+    private KeyCode keyAnotherPlayer = KeyCode.LeftShift;
     private string swapKey = "space";
     private string[] skillsKey = { "q", "w", "e"};
 
