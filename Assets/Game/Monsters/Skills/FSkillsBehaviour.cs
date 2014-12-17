@@ -15,17 +15,7 @@ public class FSkillsBehaviour {
         {
             behaviour = go.AddComponent<SkillBlastBehaviour>();
 
-            behaviour.skillID = oSkill.skillID;
-            behaviour.semiauto = oSkill.semiauto;
-            behaviour.cooldown = oSkill.cooldown;
-            behaviour.pP = oSkill.pP;
-            behaviour.ppRemaining = oSkill.ppRemaining;
-            behaviour.range = oSkill.range;
-            behaviour.damages = oSkill.damages;
-            behaviour.debuffs = oSkill.debuffs;
-            behaviour.state = go.GetComponent<BPilotState>();
-            behaviour.controller = go.GetComponent<BPilot>();
-
+            addCommon(go, behaviour, oSkill);
 
             ((SkillBlastBehaviour)behaviour).blast = ((OSkillBlast)oSkill).blast;
             ((SkillBlastBehaviour)behaviour).offset = ((OSkillBlast)oSkill).offset;
@@ -46,16 +36,9 @@ public class FSkillsBehaviour {
         {
             behaviour = go.AddComponent<SkillProjectileBehaviour>();
 
-            behaviour.skillID = oSkill.skillID;
-            behaviour.semiauto = oSkill.semiauto;
-            behaviour.cooldown = oSkill.cooldown;
-            behaviour.pP = oSkill.pP;
-            behaviour.ppRemaining = oSkill.ppRemaining;
-            behaviour.range = oSkill.range;
-            behaviour.damages = oSkill.damages;
-            behaviour.debuffs = oSkill.debuffs;
+            addCommon(go, behaviour, oSkill);
 
-            ((SkillProjectileBehaviour)behaviour).bullet = ((OSkillProjectile)oSkill).bullet;
+            ((SkillProjectileBehaviour)behaviour).bulletPrefab = ((OSkillProjectile)oSkill).bullet;
             ((SkillProjectileBehaviour)behaviour).bulletSpeed = ((OSkillProjectile)oSkill).bulletSpeed;
             ((SkillProjectileBehaviour)behaviour).bulletSteerSpeed = ((OSkillProjectile)oSkill).bulletSteerSpeed;
             
@@ -72,5 +55,37 @@ public class FSkillsBehaviour {
         }
 
         return behaviour;
+    }
+
+    static void addCommon(GameObject go, SkillsBehaviour behaviour, OSkills oSkill)
+    {
+
+        behaviour.skillID = oSkill.skillID;
+        behaviour.semiauto = oSkill.semiauto;
+        behaviour.cooldown = oSkill.cooldown;
+        behaviour.pP = oSkill.pP;
+        behaviour.ppRemaining = oSkill.ppRemaining;
+        behaviour.range = oSkill.range;
+        Debug.Log(floatarraytostring(oSkill.damages, ","));
+        behaviour.damages = oSkill.damages;
+        Debug.Log(floatarraytostring(behaviour.damages, ","));
+
+
+        behaviour.debuffs = oSkill.debuffs;
+        behaviour.state = go.GetComponent<BPilotState>();
+        behaviour.controller = go.GetComponent<BPilot>();
+
+    }
+
+    static string floatarraytostring(float[] values, string separator)
+    {
+        string str = "";
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (i > 0) str += separator;
+            str += values[i];
+        }
+
+        return str;
     }
 }

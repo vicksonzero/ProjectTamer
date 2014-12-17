@@ -23,7 +23,7 @@ public class MonsterData : MonoBehaviour {
     [Tooltip("Normal turning speed. can be overridden by other means")]
     public float turningSpeed = 100;
 
-    public float unitRadius = 40;
+    public Vector3 size = Vector3.one;
 
 
     [Header("AI")]

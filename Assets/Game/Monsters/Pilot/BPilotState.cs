@@ -8,5 +8,7 @@ public class BPilotState : MonoBehaviour {
     public Vector3 enemyVector;
     public Vector3 moveVector;
 
+    public float hp=100;
+
 
 }

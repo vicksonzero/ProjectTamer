@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(SGameCreatePilot))]
+[RequireComponent(typeof(FGameCreatePilot))]
 public class BGameController : Photon.MonoBehaviour {
 
 
@@ -19,11 +19,11 @@ public class BGameController : Photon.MonoBehaviour {
     public bool isGoingSolo = false;
     public BPlayerController player;
 
-    private SGameCreatePilot pilotCreator;
+    private FGameCreatePilot pilotCreator;
 
 	// Use this for initialization
 	void Start () {
-        this.pilotCreator = this.GetComponent<SGameCreatePilot>();
+        this.pilotCreator = this.GetComponent<FGameCreatePilot>();
         GameObject monsterSelectControl_go = GameObject.Find("MonsterSelectControl");
         if (monsterSelectControl_go == null)
         {

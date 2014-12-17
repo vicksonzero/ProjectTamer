@@ -111,6 +111,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour,
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+        Debug.Log("TODO: make GUI for trackable lost");
     }
 
     #endregion // PRIVATE_METHODS
