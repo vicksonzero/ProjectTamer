@@ -37,6 +37,7 @@ public class MultiplayerShowcaseBehaviour : MonoBehaviour {
     }
     public void prevMonster(bool wrap)
     {
+        print(this.monsterID);
         if (monsterSelectControl.monstersAvaliable <= 1) return;
         if (wrap)
         {
@@ -60,6 +61,7 @@ public class MultiplayerShowcaseBehaviour : MonoBehaviour {
             print("monster #" + this.monsterID + "is selected. prev:");
             this.prevMonster(true);
         }
+        print(this.monsterID);
         this.updateMonsterModel();
     }
 
@@ -128,10 +130,10 @@ public class MultiplayerShowcaseBehaviour : MonoBehaviour {
 
         GameObject monster = this.monsterList[this.monsterID];
 
-        Transform model = monster.transform.FindChild("MODEL");
+        Transform model = monster.transform.FindChild("_normalized_model");
         Transform go_model = Instantiate(model, this.transform.position, Quaternion.identity) as Transform;
 
-        go_model.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        go_model.localScale = new Vector3(5,5,5);
         go_model.parent = this.pad;
         
     }

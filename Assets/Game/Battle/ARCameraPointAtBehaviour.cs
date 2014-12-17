@@ -78,6 +78,7 @@ public class ARCameraPointAtBehaviour : MonoBehaviour
 
     public void OnIconMoveToDown()
     {
+        print("Hi");
         this.iconMoveToIsDragging = true;
 
         if (Input.touchSupported)

@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(MonsterController))]
 public class SkillProjectileBehaviour : SkillsBehaviour
 {
     
     [Header("Implementation")]
     public ProjectileBehaviour bullet;
-    [Tooltip("relative positions to spawn bullet. \nrotated with player. \n\nmore than 1 entry mean that more than 1 projectile per shot, \nwhich means that damage is scaled up.\n\nProjectiles will fly away from center and steer to target")]
-    public Vector3[] offsets = new Vector3[1];
+    [Tooltip("relative positions to spawn bullet. \nrotated with player. \n\nmore than 1 entry mean that more than 1 projectile per shot, \nwhich means that damage is scaled up.\n\nProjectiles will then steer to target")]
+    public Transform[] spawnPoints = new Transform[0];
     public float bulletSpeed = 100;
     public float bulletSteerSpeed = 100;
 
@@ -16,7 +15,6 @@ public class SkillProjectileBehaviour : SkillsBehaviour
 
     private float alarmStart = 0;
     private float alarmStop = 0;
-    private MonsterController controller; // needs Requuirecomponent
 
     #region unity events
 
@@ -67,9 +65,9 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     #endregion // Messages
 
     #region public methods
-    public override void init()
+    public void init()
     {
-        this.controller = this.GetComponent<MonsterController>();
+        base.init();
         this.ppRemaining = this.pP;
         if (this.skillID < 0)
         {
@@ -97,16 +95,8 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     {
         print("spawnAllBullets() called");
         // get enemyVector from other component
-        Vector3 spawnPos;
-        foreach(Vector3 offset in this.offsets)
+        foreach(Transform sp in this.spawnPoints)
         {
-            spawnPos = this.transform.localPosition + offset;
-            // Unity.Instantiate()
-            //ProjectileBehaviour b = Instantiate(
-            //    this.bullet,
-            //    this.transform.position + offset,
-            //    Quaternion.LookRotation(offset,Vector3.up)
-            //) as ProjectileBehaviour;
 
             // photon network
             print(this.bullet.name);
@@ -121,8 +111,8 @@ public class SkillProjectileBehaviour : SkillsBehaviour
 
             GameObject b = PhotonNetwork.Instantiate(
                 this.bullet.name,
-                this.transform.position + offset,
-                Quaternion.LookRotation(offset, Vector3.up),
+                sp.position,
+                sp.rotation,
                 0,
                 bParam
             ) ;
