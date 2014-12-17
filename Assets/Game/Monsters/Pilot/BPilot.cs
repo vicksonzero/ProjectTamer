@@ -14,6 +14,8 @@ public class BPilot : MonoBehaviour {
     public Transform enemy;
     [HideInInspector]
     public BGameController gameController;
+    [HideInInspector]
+    public Transform nameTag;
 
 	// Use this for initialization
 	void Start () {
@@ -32,11 +34,31 @@ public class BPilot : MonoBehaviour {
         {
 
         }
+        this.stepUpdateNameTag();
 	}
 
 
 
 
+    #region public methods
+
+    public float getHP()
+    {
+        return this.state.hp;
+
+    }
+    public float getMaxHP()
+    {
+        return this.data.hp;
+
+    }
+    public float getHPPercent()
+    {
+        return this.state.hp / this.data.hp;
+
+    }
+
+    #endregion public methods
 
 
     //=====================================================================================
@@ -46,6 +68,7 @@ public class BPilot : MonoBehaviour {
     private void AIInit()
     {
         this.state.givenPosition = this.transform.position;
+        this.state.hp = this.data.hp;
     }
 
     /**
@@ -58,8 +81,8 @@ public class BPilot : MonoBehaviour {
             this.state.enemyVector = this.enemy.transform.position - this.transform.position;
         this.state.moveVector = this.state.givenPosition - this.transform.position;
 
-        print(this.state.givenPosition.ToString());
-        print(this.state.moveVector.ToString());
+        //print(this.state.givenPosition.ToString());
+        //print(this.state.moveVector.ToString());
     }
     /**
      * gathers information from surroundings 
@@ -87,8 +110,8 @@ public class BPilot : MonoBehaviour {
 
     #endregion // AI decisions
 
-    //=====================================================================================
 
+    //=====================================================================================
 
 
     #region actual action
@@ -116,8 +139,14 @@ public class BPilot : MonoBehaviour {
 
     }
 
+    private void stepUpdateNameTag()
+    {
+        this.nameTag.guiText.text = this.name + " " + this.getHP().ToString("F2") + "/" + this.getMaxHP().ToString("F2");
+    }
+
     #endregion actual action
 
+    //=====================================================================================
 
     #region Commands
     public void CommandMoveTo(Vector3 pos)
@@ -138,7 +167,18 @@ public class BPilot : MonoBehaviour {
     {
         this.skills[skillID].SkillStop(skillID);
     }
+    public void TakeDamage(float[] damages)
+    {
+        print("Taking damage:"+ damages.ToString());
+
+        this.state.hp -= damages[0];
+    }
+    public void TakeBuff(string name)
+    {
+        print("Taking buff:" + name);
+    }
     #endregion Commands
+
 
 
 }

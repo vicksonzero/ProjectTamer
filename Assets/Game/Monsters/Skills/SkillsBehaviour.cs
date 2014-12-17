@@ -24,9 +24,8 @@ public abstract class SkillsBehaviour : MonoBehaviour
     public float[] damages = new float[6];
     public GameObject[] debuffs;
 
-    [HideInInspector]
+
     public BPilotState state;
-    [HideInInspector]
     public BPilot controller;
 
 

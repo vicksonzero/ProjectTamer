@@ -5,7 +5,7 @@ public class SkillProjectileBehaviour : SkillsBehaviour
 {
     
     [Header("Implementation")]
-    public ProjectileBehaviour bullet;
+    public ProjectileBehaviour bulletPrefab;
     [Tooltip("relative positions to spawn bullet. \nrotated with player. \n\nmore than 1 entry mean that more than 1 projectile per shot, \nwhich means that damage is scaled up.\n\nProjectiles will then steer to target")]
     public Transform[] spawnPoints = new Transform[0];
     public float bulletSpeed = 100;
@@ -78,6 +78,13 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     {
         return (Time.time-this.alarmStart)/(this.alarmStop - this.alarmStart);
     }
+
+    public void ApplyDamage(Transform target)
+    {
+        target.GetComponent<BPilot>().TakeDamage(this.damages);
+    }
+
+
     #endregion public methods
 
     #region private methods
@@ -99,24 +106,38 @@ public class SkillProjectileBehaviour : SkillsBehaviour
         {
 
             // photon network
-            print(this.bullet.name);
+            print(this.bulletPrefab.name);
 
 
-            object[] bParam = new object[5];
-            bParam[(int)ProjectileParameters.targetName] = (object)this.controller.enemy.name;
-            bParam[(int)ProjectileParameters.bulletSpeed] = (object)this.bulletSpeed;
-            bParam[(int)ProjectileParameters.bulletSteerSpeed] = (object)this.bulletSteerSpeed;
-            bParam[(int)ProjectileParameters.damages] = (object)this.damages;
-            //bParam[(int)ProjectileParameters.debuffs] = (object)this.debuffs;
+            //object[] bParam = new object[5];
+            //bParam[(int)ProjectileParameters.targetName] = (object)this.controller.enemy.name;
+            //bParam[(int)ProjectileParameters.bulletSpeed] = (object)this.bulletSpeed;
+            //bParam[(int)ProjectileParameters.bulletSteerSpeed] = (object)this.bulletSteerSpeed;
+            //bParam[(int)ProjectileParameters.damages] = (object)this.damages;
+            ////bParam[(int)ProjectileParameters.debuffs] = (object)this.debuffs;
+            //
+            //GameObject b = PhotonNetwork.Instantiate(
+            //    this.bullet.name,
+            //    sp.position,
+            //    sp.rotation,
+            //    0,
+            //    bParam
+            //) ;
+            //ProjectileBehaviour bBehaviour = b.GetComponent<ProjectileBehaviour>();
 
-            GameObject b = PhotonNetwork.Instantiate(
-                this.bullet.name,
+
+            print("offset:" + sp.ToString());
+            ProjectileBehaviour b = Instantiate(
+                this.bulletPrefab,
                 sp.position,
-                sp.rotation,
-                0,
-                bParam
-            ) ;
-            ProjectileBehaviour bBehaviour = b.GetComponent<ProjectileBehaviour>();
+                sp.rotation
+            ) as ProjectileBehaviour;
+            b.target = this.controller.enemy;
+            b.ownerSkill = this;
+
+            b.bulletSpeed = this.bulletSpeed;
+            b.bulletSteerSpeed = this.bulletSteerSpeed;
+            //b.debuffs = this.debuffs;
         }
     }
     #endregion // private methods
