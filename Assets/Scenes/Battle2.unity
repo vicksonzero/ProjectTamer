@@ -115,8 +115,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillDown
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStart
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -133,8 +133,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillUp
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStop
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -552,6 +552,32 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429619973}
+--- !u!21 &504865550
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: letsPlay_scaledMaterial
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 3677a4a42f4340d7bdf58855bcf4a3d6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats: {}
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .820895553, g: .820895553, b: .820895553, a: 1}
 --- !u!1 &533780325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,8 +2275,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillDown
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStart
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2267,8 +2293,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillUp
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStop
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2470,8 +2496,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillDown
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStart
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2488,8 +2514,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: OnIconSkillUp
+        - m_Target: {fileID: 1593189302}
+          m_MethodName: IconSkillStop
           m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2672,7 +2698,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 1607458178}
   m_GameObject: {fileID: 1369996370}
-  m_Mesh: {fileID: 2057680275}
+  m_Mesh: {fileID: 2077820238}
 --- !u!114 &1369996373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2728,7 +2754,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 1940179869}
+  - {fileID: 504865550}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3089,7 +3115,7 @@ Prefab:
     - target: {fileID: 3300000, guid: 384a0d8cc71cef74a873b3353337ea2c, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 2057680275}
+      objectReference: {fileID: 2077820238}
     - target: {fileID: 400000, guid: 384a0d8cc71cef74a873b3353337ea2c, type: 2}
       propertyPath: m_LocalScale.x
       value: 205
@@ -3105,7 +3131,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 384a0d8cc71cef74a873b3353337ea2c, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1940179869}
+      objectReference: {fileID: 504865550}
     - target: {fileID: 11400000, guid: 384a0d8cc71cef74a873b3353337ea2c, type: 2}
       propertyPath: mTrackableName
       value: letsPlay
@@ -3310,32 +3336,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1547402214}
   m_RootOrder: 0
---- !u!21 &1940179869
-Material:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: letsPlay_scaledMaterial
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: []
-  m_CustomRenderQueue: -1
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 2800000, guid: 3677a4a42f4340d7bdf58855bcf4a3d6, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors:
-      data:
-        first:
-          name: _Color
-        second: {r: .820895553, g: .820895553, b: .820895553, a: 1}
 --- !u!1 &1963061802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,6 +3387,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   isGoingSolo: 0
+  player: {fileID: 1989130064}
 --- !u!114 &1963061805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3475,6 +3476,7 @@ MonoBehaviour:
   chosenInput: 0
   gameController: {fileID: 1963061804}
   networkPlayer: {fileID: 99570247}
+  monsterID: -1
 --- !u!1 &2038125742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,7 +3635,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038125742}
---- !u!43 &2057680275
+--- !u!43 &2077820238
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

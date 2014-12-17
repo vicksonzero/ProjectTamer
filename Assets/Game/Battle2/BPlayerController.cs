@@ -8,6 +8,7 @@ public class BPlayerController : MonoBehaviour {
     public int chosenInput = 0;
     public BGameController gameController;
     public BInputNetworkPlayer networkPlayer;
+    public int monsterID = -1;
 
 	// Use this for initialization
 	void Start () {
@@ -27,44 +28,44 @@ public class BPlayerController : MonoBehaviour {
 	void Update () {
 	
 	}
-    public void Move(int monsterID, Vector3 pos)
+    public void Move(Vector3 pos)
     {
         if (PhotonNetwork.isMasterClient)
         {
-            this.gameController.pilotsGO[monsterID].GetComponent<BPilot>().CommandMoveTo(pos);
+            this.gameController.pilotsGO[this.monsterID].GetComponent<BPilot>().CommandMoveTo(pos);
         }
         else
         {
             this.networkPlayer.CommandMoveTo(pos);
         }
     }
-    public void SkillStart(int monsterID, int skillID)
+    public void SkillStart(int skillID)
     {
         if (PhotonNetwork.isMasterClient)
         {
-            this.gameController.pilotsGO[monsterID].GetComponent<BPilot>().CommandSkillStart(skillID);
+            this.gameController.pilotsGO[this.monsterID].GetComponent<BPilot>().CommandSkillStart(skillID);
         }
         else
         {
             this.networkPlayer.CommandSkillStart(skillID);
         }
     }
-    public void SkillStep(int monsterID, int skillID)
+    public void SkillStep(int skillID)
     {
         if (PhotonNetwork.isMasterClient)
         {
-            this.gameController.pilotsGO[monsterID].GetComponent<BPilot>().CommandSkillStep(skillID);
+            this.gameController.pilotsGO[this.monsterID].GetComponent<BPilot>().CommandSkillStep(skillID);
         }
         else
         {
             //this.networkPlayer.CommandSkillStep(skillID);
         }
     }
-    public void SkillStop(int monsterID, int skillID)
+    public void SkillStop(int skillID)
     {
         if (PhotonNetwork.isMasterClient)
         {
-            this.gameController.pilotsGO[monsterID].GetComponent<BPilot>().CommandSkillStop(skillID);
+            this.gameController.pilotsGO[this.monsterID].GetComponent<BPilot>().CommandSkillStop(skillID);
         }
         else
         {

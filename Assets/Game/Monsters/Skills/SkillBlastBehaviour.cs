@@ -15,7 +15,6 @@ public class SkillBlastBehaviour : SkillsBehaviour
 
     private float alarmStart = 0;
     private float alarmStop = 0;
-    private MonsterController controller; // needs Requirecomponent
 
     #region unity events
 
@@ -34,7 +33,7 @@ public class SkillBlastBehaviour : SkillsBehaviour
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
         //Debug.Log("in skill");
-        if (this.canShoot())
+        if (this.canShoot() && this.state.enemyVector.sqrMagnitude<=this.sqRange)
         {
             // set alarm for next canShoot
             this.setAlarm();
@@ -48,7 +47,7 @@ public class SkillBlastBehaviour : SkillsBehaviour
         if (!this.semiauto) return;
         if (skillID != this.skillID) return;
 
-        if (this.canShoot())
+        if (this.canShoot() && this.state.enemyVector.sqrMagnitude <= this.sqRange)
         {
             // set alarm for next canShoot
             this.setAlarm();
@@ -68,9 +67,9 @@ public class SkillBlastBehaviour : SkillsBehaviour
     #endregion // Messages
 
     #region public methods
-    public override void init()
+    public void init()
     {
-        this.controller = this.GetComponent<MonsterController>();
+        base.init();
         this.ppRemaining = this.pP;
         if (this.skillID < 0)
         {

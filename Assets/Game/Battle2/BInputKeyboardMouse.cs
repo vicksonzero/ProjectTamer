@@ -46,7 +46,7 @@ public class BInputKeyboardMouse : MonoBehaviour {
                 this.positionMarker.transform.position = hitInfo.point;
 
                 //Debug.Log("click");
-                this.playerController.Move(this.monsterID, hitInfo.point);
+                this.playerController.Move(hitInfo.point);
             }
 
         }
@@ -60,15 +60,15 @@ public class BInputKeyboardMouse : MonoBehaviour {
             if (Input.GetKeyDown(this.skillsKey[i]))
             {
                 //Debug.Log("Keyboard");
-                this.playerController.SkillStart(this.monsterID, i);
+                this.playerController.SkillStart(i);
             }
             if (Input.GetKey(this.skillsKey[i]))
             {
-                this.playerController.SkillStep(this.monsterID, i);
+                this.playerController.SkillStep(i);
             }
             if (Input.GetKeyUp(this.skillsKey[i]))
             {
-                this.playerController.SkillStop(this.monsterID, i);
+                this.playerController.SkillStop(i);
             }
         }
 

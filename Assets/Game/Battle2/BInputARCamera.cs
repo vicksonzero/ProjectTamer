@@ -8,7 +8,6 @@ public class BInputARCamera : MonoBehaviour
     public Transform positionMarker;
     [HideInInspector]
     public BPlayerController playerController;
-    [HideInInspector]
     public int monsterID;
 
 
@@ -47,13 +46,13 @@ public class BInputARCamera : MonoBehaviour
             }
             else { }
 
-            this.IconMove(0);
+            this.IconMove();
         }
         for (int i = 0; i < this.buttonsHold.Length; i++)
         {
             if (this.buttonsHold[i])
             {
-                this.IconSkillStep(0,i);
+                this.IconSkillStep(i);
             }
         }
     }
@@ -73,26 +72,25 @@ public class BInputARCamera : MonoBehaviour
 
     }
 
-    public void IconMove(int monsterID)
+    public void IconMove()
     {
-        print("3");
-        this.playerController.Move(monsterID, this.p);
+        this.playerController.Move(this.p);
     }
 
-    public void IconSkillStart(int monsterID, int skillID)
+    public void IconSkillStart(int skillID)
     {
-        this.playerController.SkillStart(this.monsterID, skillID);
+        this.playerController.SkillStart(skillID);
         this.buttonsHold[skillID] = true;
     }
 
-    public void IconSkillStep(int monsterID, int skillID)
+    public void IconSkillStep(int skillID)
     {
-        this.playerController.SkillStep(this.monsterID, skillID);
+        this.playerController.SkillStep(skillID);
     }
 
-    public void IconSkillStop(int monsterID, int skillID)
+    public void IconSkillStop(int skillID)
     {
-        this.playerController.SkillStop(this.monsterID, skillID);
+        this.playerController.SkillStop(skillID);
         this.buttonsHold[skillID] = false;
     }
     

@@ -351,6 +351,66 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100042
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400042}
+  m_Layer: 0
+  m_Name: LeafVectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100044
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400044}
+  m_Layer: 0
+  m_Name: LeafVectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100046
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400046}
+  m_Layer: 0
+  m_Name: LeafVectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100048
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400048}
+  m_Layer: 0
+  m_Name: LeafVectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -375,6 +435,10 @@ Transform:
   m_Children:
   - {fileID: 400040}
   - {fileID: 400028}
+  - {fileID: 400048}
+  - {fileID: 400042}
+  - {fileID: 400046}
+  - {fileID: 400044}
   m_Father: {fileID: 400012}
   m_RootOrder: 1
 --- !u!4 &400004
@@ -623,6 +687,54 @@ Transform:
   - {fileID: 400010}
   m_Father: {fileID: 400002}
   m_RootOrder: 0
+--- !u!4 &400042
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100042}
+  m_LocalRotation: {x: -.0782439783, y: .760347843, z: .0932479799, w: .63800782}
+  m_LocalPosition: {x: -18.7346039, y: 38.9000015, z: .800000012}
+  m_LocalScale: {x: .939310253, y: .886021435, z: -.838013113}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 3
+--- !u!4 &400044
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  m_LocalRotation: {x: -.0230939891, y: .890036523, z: .119515933, w: .43933776}
+  m_LocalPosition: {x: -15.6965599, y: 38.9000015, z: -16.2000008}
+  m_LocalScale: {x: .243948057, y: .957024336, z: -.213653892}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 5
+--- !u!4 &400046
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100046}
+  m_LocalRotation: {x: -.0230936911, y: .890036523, z: .119515665, w: .439337909}
+  m_LocalPosition: {x: 15.5, y: 38.9000015, z: -16.2000008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 4
+--- !u!4 &400048
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100048}
+  m_LocalRotation: {x: -.0782441273, y: .760347962, z: .0932477117, w: .6380077}
+  m_LocalPosition: {x: 18.5, y: 38.9000015, z: .800000012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 2
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -866,6 +978,7 @@ MonoBehaviour:
   armour: 0
   type: 2
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -909,9 +1022,12 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  bullet: {fileID: 11400000, guid: 76b713934b8b3f942b24d02f91fd9f1f, type: 2}
+  spawnPoints:
+  - {fileID: 400048}
+  - {fileID: 400042}
+  - {fileID: 400046}
+  - {fileID: 400044}
   bulletSpeed: 100
   bulletSteerSpeed: 100
 --- !u!114 &11400004
@@ -980,8 +1096,7 @@ MonoBehaviour:
   - 0
   debuffs: []
   bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  spawnPoints: []
   bulletSpeed: 100
   bulletSteerSpeed: 100
 --- !u!114 &11400008
@@ -1001,6 +1116,7 @@ MonoBehaviour:
   armour: 0
   type: 0
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1046,6 +1162,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1113,6 +1230,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1215,6 +1333,7 @@ MonoBehaviour:
   debuffs: []
   blast: {fileID: 0}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  blastDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1232,6 +1351,7 @@ MonoBehaviour:
   armour: 0
   type: 1
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1262,6 +1382,7 @@ MonoBehaviour:
   armour: 0
   type: 3
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1340,8 +1461,7 @@ MonoBehaviour:
   - 0
   debuffs: []
   bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  spawnPoints: []
   bulletSpeed: 100
   bulletSteerSpeed: 100
 --- !u!114 &11400030
@@ -1374,11 +1494,9 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
+  crushEffect: {fileID: 0}
+  crushSpeed: 100
+  crushSteerSpeed: 100
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1396,6 +1514,7 @@ MonoBehaviour:
   armour: 0
   type: 4
   movingSpeed: 2
+  sqMovingSpeed: 2
   turningSpeed: 100
   unitRadius: 40
   comfortZone:
@@ -1526,11 +1645,9 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  bullet: {fileID: 0}
-  offsets:
-  - {x: 0, y: 0, z: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
+  crushEffect: {fileID: 0}
+  crushSpeed: 100
+  crushSteerSpeed: 100
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

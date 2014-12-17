@@ -17,6 +17,7 @@ public class BGameController : Photon.MonoBehaviour {
     public GameObject[] pilotsGO = new GameObject[2];
     [HideInInspector]
     public bool isGoingSolo = false;
+    public BPlayerController player;
 
     private SGameCreatePilot pilotCreator;
 
@@ -42,8 +43,19 @@ public class BGameController : Photon.MonoBehaviour {
             int id1 = PhotonNetwork.AllocateViewID();
             this.photonView.RPC("createPilots", PhotonTargets.All, id0, id1);
         }
+        if (PhotonNetwork.isMasterClient)
+        {
+            this.player.monsterID = 0;
+        }else{
+            this.player.monsterID = 1;
+        }
 
 	}
+
+    public void OnTakeDamage(int monsterID, int remainingHP)
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

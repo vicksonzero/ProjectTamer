@@ -13,13 +13,14 @@ public class SGameCreatePilot :MonoBehaviour {
 
         //MonsterController controller = pilot.AddComponent<MonsterController>();
         BPilot pilotBehaviour = pilot_go.AddComponent<BPilot>();
-        pilotGetIntoMonster(pilot_go, monsterID);
+        pilotBehaviour.state = pilot_go.AddComponent<BPilotState>();
 
         PhotonView pv = pilot_go.AddComponent<PhotonView>();
         pv.viewID = networkId;
         pv.synchronization = ViewSynchronization.ReliableDeltaCompressed;
         pv.observed = pilot_go.transform;
         pv.onSerializeTransformOption = OnSerializeTransform.PositionAndRotation;
+        pilotGetIntoMonster(pilot_go, monsterID);
 
         return pilot_go;
     }
@@ -46,9 +47,10 @@ public class SGameCreatePilot :MonoBehaviour {
             // actual
             pilotBehaviour.skillsDef[i] = oSkill;
         }
-        foreach (OSkills oSkill in pilotBehaviour.skillsDef)
+        for (int i=pilotBehaviour.skillsDef.Length-1; i >=0; i--)
         {
-            FSkillsBehaviour.attachSkillTo(pilot_go, oSkill);
+            OSkills oSkill = pilotBehaviour.skillsDef[i];
+            pilotBehaviour.skills[i] = FSkillsBehaviour.attachSkillTo(pilot_go, oSkill);
         }
         GameObject monster = this.monsterDefinition.list[monsterID];
 

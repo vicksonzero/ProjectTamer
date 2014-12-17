@@ -23,6 +23,8 @@ public class FSkillsBehaviour {
             behaviour.range = oSkill.range;
             behaviour.damages = oSkill.damages;
             behaviour.debuffs = oSkill.debuffs;
+            behaviour.state = go.GetComponent<BPilotState>();
+            behaviour.controller = go.GetComponent<BPilot>();
 
 
             ((SkillBlastBehaviour)behaviour).blast = ((OSkillBlast)oSkill).blast;
@@ -54,10 +56,19 @@ public class FSkillsBehaviour {
             behaviour.debuffs = oSkill.debuffs;
 
             ((SkillProjectileBehaviour)behaviour).bullet = ((OSkillProjectile)oSkill).bullet;
-            ((SkillProjectileBehaviour)behaviour).offsets = ((OSkillProjectile)oSkill).offsets;
             ((SkillProjectileBehaviour)behaviour).bulletSpeed = ((OSkillProjectile)oSkill).bulletSpeed;
             ((SkillProjectileBehaviour)behaviour).bulletSteerSpeed = ((OSkillProjectile)oSkill).bulletSteerSpeed;
-
+            
+            ((SkillProjectileBehaviour)behaviour).spawnPoints = new Transform[((OSkillProjectile)oSkill).spawnPoints.Length];
+            for(int i= ((OSkillProjectile)oSkill).spawnPoints.Length-1; i >=0; i--){
+                Transform sp = ((OSkillProjectile)oSkill).spawnPoints[i];
+                Transform sp_go = Object.Instantiate(sp, go.transform.position, go.transform.rotation) as Transform;
+                sp_go.localPosition = sp.localPosition;
+                sp_go.localRotation = sp.localRotation;
+                sp_go.SetParent(go.transform);
+                ((SkillProjectileBehaviour)behaviour).spawnPoints[i] = sp_go;
+            }
+            
         }
 
         return behaviour;

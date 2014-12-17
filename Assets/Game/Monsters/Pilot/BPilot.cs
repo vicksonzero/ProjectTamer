@@ -17,7 +17,7 @@ public class BPilot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        this.state = this.gameObject.AddComponent<BPilotState>();
+        //this.state = this.gameObject.AddComponent<BPilotState>();
 	}
 	
 	// Update is called once per frame
