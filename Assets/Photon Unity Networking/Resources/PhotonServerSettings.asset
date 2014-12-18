@@ -48,4 +48,6 @@ MonoBehaviour:
   - NetSkillStop
   - receiveMasterClientMonsterChoice
   - createPilots
+  - spawnAllBullets
+  - netSpawnAllBullets
   DisableAutoOpenWizard: 0

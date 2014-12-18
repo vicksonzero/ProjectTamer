@@ -1066,7 +1066,7 @@ MonoBehaviour:
   - {fileID: 400042}
   - {fileID: 400046}
   bulletSpeed: 200
-  bulletSteerSpeed: 2.5
+  bulletSteerSpeed: 3
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

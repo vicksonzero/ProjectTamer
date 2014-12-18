@@ -19,8 +19,13 @@ public class FGameCreatePilot :MonoBehaviour {
         PhotonView pv = pilot_go.AddComponent<PhotonView>();
         pv.viewID = networkId;
         pv.synchronization = ViewSynchronization.ReliableDeltaCompressed;
-        pv.observed = pilot_go.transform;
-        pv.onSerializeTransformOption = OnSerializeTransform.PositionAndRotation;
+        //pv.onSerializeTransformOption = OnSerializeTransform.PositionAndRotation;
+
+        // Photon serializer
+        pilotBehaviour.network = pilot_go.AddComponent<BPilotNetwork>();
+        pilotBehaviour.network.controller = pilotBehaviour;
+        pilotBehaviour.network.updateSpeed = 4;
+        pv.observed = pilotBehaviour.network;
 
         // add label
         Transform nameTag = Instantiate(monsterDefinition.nameTagPrefab, pilot_go.transform.position, pilot_go.transform.rotation) as Transform;

@@ -81,7 +81,14 @@ public class SkillProjectileBehaviour : SkillsBehaviour
 
     public void ApplyDamage(Transform target)
     {
-        target.GetComponent<BPilot>().TakeDamage(this.damages);
+        if (PhotonNetwork.isMasterClient)
+        {
+            target.GetComponent<BPilot>().TakeDamage(this.damages);
+        }
+        else
+        {
+            print("Client does not actually take damage");
+        }
     }
 
 
@@ -100,31 +107,21 @@ public class SkillProjectileBehaviour : SkillsBehaviour
 
     private void spawnAllBullets()
     {
-        print("spawnAllBullets() called");
+        this.photonView.RPC("netSpawnAllBullets", PhotonTargets.All,this.skillID);
+    }
+
+    [RPC]
+    public void netSpawnAllBullets(int skillID)
+    {
+        if (skillID != this.skillID)
+        {
+            print("wrong skillID");
+            return;
+        }
+        print("netSpawnAllBullets() called");
         // get enemyVector from other component
         foreach(Transform sp in this.spawnPoints)
         {
-
-            // photon network
-            print(this.bulletPrefab.name);
-
-
-            //object[] bParam = new object[5];
-            //bParam[(int)ProjectileParameters.targetName] = (object)this.controller.enemy.name;
-            //bParam[(int)ProjectileParameters.bulletSpeed] = (object)this.bulletSpeed;
-            //bParam[(int)ProjectileParameters.bulletSteerSpeed] = (object)this.bulletSteerSpeed;
-            //bParam[(int)ProjectileParameters.damages] = (object)this.damages;
-            ////bParam[(int)ProjectileParameters.debuffs] = (object)this.debuffs;
-            //
-            //GameObject b = PhotonNetwork.Instantiate(
-            //    this.bullet.name,
-            //    sp.position,
-            //    sp.rotation,
-            //    0,
-            //    bParam
-            //) ;
-            //ProjectileBehaviour bBehaviour = b.GetComponent<ProjectileBehaviour>();
-
 
             print("offset:" + sp.ToString());
             ProjectileBehaviour b = Instantiate(

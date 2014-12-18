@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class SkillsBehaviour : MonoBehaviour
+public abstract class SkillsBehaviour : Photon.MonoBehaviour
 {
 
     [Header("Skills basics")]

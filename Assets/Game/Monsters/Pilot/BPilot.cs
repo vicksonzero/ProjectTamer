@@ -9,6 +9,8 @@ public class BPilot : MonoBehaviour {
     [HideInInspector]
     public BPilotState state;
     [HideInInspector]
+    public BPilotNetwork network;
+    [HideInInspector]
     public SkillsBehaviour[] skills = new SkillsBehaviour[3];
     [HideInInspector]
     public Transform enemy;
