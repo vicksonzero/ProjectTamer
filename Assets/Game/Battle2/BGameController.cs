@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(FGameCreatePilot))]
+[RequireComponent(typeof(BFGameCreatePilot))]
 public class BGameController : Photon.MonoBehaviour {
 
 
@@ -19,12 +19,13 @@ public class BGameController : Photon.MonoBehaviour {
     public bool isGoingSolo = false;
     public BPlayerController player;
 
-    private FGameCreatePilot pilotCreator;
+    private BFGameCreatePilot pilotCreator;
 
 	// Use this for initialization
 	void Start () {
-        this.pilotCreator = this.GetComponent<FGameCreatePilot>();
+        this.pilotCreator = this.GetComponent<BFGameCreatePilot>();
         GameObject monsterSelectControl_go = GameObject.Find("MonsterSelectControl");
+        // init chosen monsters, either from last scene, or use default ones
         if (monsterSelectControl_go == null)
         {
             this.chosenMonsters = new int[2][]{new int[2]{0,1},new int[2]{2,3}};
@@ -37,6 +38,7 @@ public class BGameController : Photon.MonoBehaviour {
         }
         print(this.chosenMonstersToString());
 
+        // network view
         if (PhotonNetwork.isMasterClient)
         {
             int id0 = PhotonNetwork.AllocateViewID();
@@ -46,21 +48,42 @@ public class BGameController : Photon.MonoBehaviour {
         if (PhotonNetwork.isMasterClient)
         {
             this.player.monsterID = 0;
-        }else{
+        }
+        else
+        {
             this.player.monsterID = 1;
         }
 
 	}
 
-    public void OnTakeDamage(int monsterID, int remainingHP)
+    public void OnMonsterTakesDamage(BPilot pilot)
     {
+        // dies if the pilot has no hp
+        if (pilot.state.hp <= 0)
+        {
+            //this.EndGame(pilot.enemy.GetComponent<BPilot>().pilotID);
+            this.photonView.RPC("EndGame", PhotonTargets.All, pilot.enemy.GetComponent<BPilot>().pilotID);
+        }
+    }
 
+    [RPC]
+    public void EndGame(int winnerID)
+    {
+        BPilot winner = this.pilotsGO[winnerID].GetComponent<BPilot>();
+        // disable all monsters
+        foreach(GameObject pilot_go in pilotsGO)
+        {
+            pilot_go.SetActive(false);
+        }
+        this.GetComponent<BEndGame>().EndGameScreen(
+            winner.data.name + " "+
+            "(Player " + (winner.pilotID == 0 ? "A" : "B") + ") "+
+            "Wins!"
+        );
     }
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update () { }
 
     [RPC]
     void createPilots(int id0, int id1)

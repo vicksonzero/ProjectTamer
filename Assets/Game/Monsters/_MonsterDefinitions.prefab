@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   m_Layer: 0
-  m_Name: FireBlastVector
+  m_Name: WaterBlastVector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400016}
   m_Layer: 0
-  m_Name: FireBlastVector
+  m_Name: RockThrowVector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,21 +273,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100032
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400032}
-  m_Layer: 0
-  m_Name: FireBlastVector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100034
 GameObject:
   m_ObjectHideFlags: 1
@@ -371,6 +356,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100044
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400044}
+  m_Layer: 0
+  m_Name: WindVector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &100046
 GameObject:
   m_ObjectHideFlags: 1
@@ -401,6 +401,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100050
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400050}
+  m_Layer: 0
+  m_Name: WindVector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -408,7 +423,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 43.9000015, z: 39.9000015}
+  m_LocalPosition: {x: 0, y: 94.5, z: 10.6000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400014}
@@ -428,6 +443,8 @@ Transform:
   - {fileID: 400048}
   - {fileID: 400042}
   - {fileID: 400046}
+  - {fileID: 400050}
+  - {fileID: 400044}
   m_Father: {fileID: 400012}
   m_RootOrder: 1
 --- !u!4 &400004
@@ -516,8 +533,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 43.9000015, z: 39.9000015}
+  m_LocalRotation: {x: -.360250384, y: 0, z: 0, w: .932855666}
+  m_LocalPosition: {x: 0, y: 57.2000008, z: 20.2999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400030}
@@ -612,18 +629,6 @@ Transform:
   - {fileID: 400016}
   m_Father: {fileID: 400012}
   m_RootOrder: 2
---- !u!4 &400032
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100032}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 43.9000015, z: 39.9000015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400036}
-  m_RootOrder: 1
 --- !u!4 &400034
 Transform:
   m_ObjectHideFlags: 1
@@ -647,7 +652,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400038}
-  - {fileID: 400032}
   m_Father: {fileID: 400012}
   m_RootOrder: 3
 --- !u!4 &400038
@@ -688,6 +692,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 3
+--- !u!4 &400044
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  m_LocalRotation: {x: 0, y: .250887156, z: 0, w: .968016326}
+  m_LocalPosition: {x: 20.6000004, y: 0, z: 16.6000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 6
 --- !u!4 &400046
 Transform:
   m_ObjectHideFlags: 1
@@ -712,6 +728,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 2
+--- !u!4 &400050
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100050}
+  m_LocalRotation: {x: 0, y: -.250886917, z: 0, w: .968016446}
+  m_LocalPosition: {x: -20.6000004, y: 0, z: 16.6000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
+  m_RootOrder: 5
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -1011,9 +1039,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Greenfly
   description: MonsterDescription
-  hp: 100
+  hp: 1000
   armour: 0
-  type: 2
+  type: 1
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1086,11 +1114,11 @@ MonoBehaviour:
   skillTime: 0
   recoveryTime: 0
   cooldown: 1
-  pP: 20
+  pP: 30
   ppRemaining: 0
   range: 50
   damages:
-  - 0
+  - 60
   - 0
   - 0
   - 0
@@ -1125,17 +1153,19 @@ MonoBehaviour:
   ppRemaining: 0
   range: 50
   damages:
+  - 20
   - 0
   - 0
-  - 0
-  - 0
+  - 80
   - 0
   - 0
   debuffs: []
-  bullet: {fileID: 0}
-  spawnPoints: []
+  bullet: {fileID: 11400000, guid: 27efb5224c6d98c4a986b05f3864700d, type: 2}
+  spawnPoints:
+  - {fileID: 400050}
+  - {fileID: 400044}
   bulletSpeed: 100
-  bulletSteerSpeed: 100
+  bulletSteerSpeed: 2
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1149,9 +1179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Aqua
   description: MonsterDescription
-  hp: 100
+  hp: 1000
   armour: 0
-  type: 0
+  type: 4
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1191,8 +1221,8 @@ MonoBehaviour:
   range: 70
   damages:
   - 0
-  - 100
   - 0
+  - 100
   - 0
   - 0
   - 0
@@ -1223,9 +1253,9 @@ MonoBehaviour:
   ppRemaining: 0
   range: 50
   damages:
+  - 50
   - 0
-  - 0
-  - 0
+  - 60
   - 0
   - 0
   - 0
@@ -1259,8 +1289,8 @@ MonoBehaviour:
   range: 70
   damages:
   - 0
-  - 100
   - 0
+  - 20
   - 0
   - 0
   - 0
@@ -1293,7 +1323,7 @@ MonoBehaviour:
   range: 50
   damages:
   - 0
-  - 0
+  - 100
   - 0
   - 0
   - 0
@@ -1326,7 +1356,7 @@ MonoBehaviour:
   ppRemaining: 0
   range: 50
   damages:
-  - 0
+  - 100
   - 0
   - 0
   - 0
@@ -1384,9 +1414,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Inferno
   description: MonsterDescription
-  hp: 100
+  hp: 1000
   armour: 0
-  type: 1
+  type: 0
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1415,9 +1445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Roclay
   description: MonsterDescription
-  hp: 100
+  hp: 1000
   armour: 0
-  type: 3
+  type: 2
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1490,15 +1520,16 @@ MonoBehaviour:
   ppRemaining: 0
   range: 50
   damages:
+  - 60
   - 0
   - 0
   - 0
   - 0
-  - 0
-  - 0
+  - 40
   debuffs: []
-  bullet: {fileID: 0}
-  spawnPoints: []
+  bullet: {fileID: 11400000, guid: ca421103a8d30914ba06719eefb1918b, type: 2}
+  spawnPoints:
+  - {fileID: 400016}
   bulletSpeed: 100
   bulletSteerSpeed: 100
 --- !u!114 &11400030
@@ -1547,9 +1578,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sizz
   description: MonsterDescription
-  hp: 100
+  hp: 1000
   armour: 0
-  type: 4
+  type: 3
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1606,7 +1637,7 @@ MonoBehaviour:
   ppRemaining: 0
   range: 50
   damages:
-  - 0
+  - 90
   - 0
   - 0
   - 0
@@ -1645,7 +1676,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 90
   - 0
   debuffs: []
   effectPrefab: {fileID: 0}
@@ -1680,7 +1711,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 110
   - 0
   debuffs: []
   crushEffect: {fileID: 0}

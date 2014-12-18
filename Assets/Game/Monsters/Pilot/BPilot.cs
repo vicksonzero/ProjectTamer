@@ -3,8 +3,11 @@ using System.Collections;
 
 public class BPilot : MonoBehaviour {
 
+    public int pilotID = -1;
     public MonsterData data;
     public OSkills[] skillsDef = new OSkills[3];
+    public enum ControlRights { none, game, player0, player1 };
+    public ControlRights haveControl = ControlRights.player0;
 
     [HideInInspector]
     public BPilotState state;
@@ -18,10 +21,13 @@ public class BPilot : MonoBehaviour {
     public BGameController gameController;
     [HideInInspector]
     public Transform nameTag;
+    [HideInInspector]
+    public BGameController game;
 
 	// Use this for initialization
 	void Start () {
         //this.state = this.gameObject.AddComponent<BPilotState>();
+        this.AIInit();
 	}
 	
 	// Update is called once per frame
@@ -58,6 +64,17 @@ public class BPilot : MonoBehaviour {
     {
         return this.state.hp / this.data.hp;
 
+    }
+    public void TakeDamage(float[] damages)
+    {
+        print("Taking damage:"+ damages.ToString());
+
+        this.state.hp -= damages[0];
+        game.OnMonsterTakesDamage(this);
+    }
+    public void TakeBuff(string name)
+    {
+        print("Taking buff:" + name);
     }
 
     #endregion public methods
@@ -169,16 +186,7 @@ public class BPilot : MonoBehaviour {
     {
         this.skills[skillID].SkillStop(skillID);
     }
-    public void TakeDamage(float[] damages)
-    {
-        print("Taking damage:"+ damages.ToString());
-
-        this.state.hp -= damages[0];
-    }
-    public void TakeBuff(string name)
-    {
-        print("Taking buff:" + name);
-    }
+    
     #endregion Commands
 
 

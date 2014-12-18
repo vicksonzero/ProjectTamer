@@ -96,18 +96,12 @@ MonoBehaviour:
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   instantiationId: 0
-  hitEffectPrefab: {fileID: 400002, guid: b7c128e37a46dca449e14eab4953ef1f, type: 2}
+  hitEffectPrefab: {fileID: 400002, guid: 01ee6b263ccad7e4c9735695861f87c2, type: 2}
+  ownerSkill: {fileID: 0}
   target: {fileID: 0}
   bulletSpeed: 100
   bulletSteerSpeed: 100
-  damages:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  debuffs: []
+  animationEndTime: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

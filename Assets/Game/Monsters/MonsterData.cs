@@ -13,7 +13,7 @@ public class MonsterData : MonoBehaviour {
 
     [Tooltip("type of monster. used to calculate damage and to learn skills. ")]
     public Types type = Types.Water; // no element
-    public enum Types { Water, Fire, Grass, Rock, Electric};
+    public enum Types { Fire, Grass, Rock, Electric, Water };
 
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float movingSpeed = 2;

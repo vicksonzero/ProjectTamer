@@ -50,4 +50,5 @@ MonoBehaviour:
   - createPilots
   - spawnAllBullets
   - netSpawnAllBullets
+  - EndGame
   DisableAutoOpenWizard: 0
