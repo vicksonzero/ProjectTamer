@@ -6,7 +6,7 @@ public abstract class OSkills : MonoBehaviour
 
     [Header("Skills basics")]
     public int skillID = -1;
-    public string name = "";
+    public string skillName = "";
     public string description = "";
     [Tooltip("whether or not the monster continues to attack as long as the skill button is pressed")]
     public bool semiauto = false;

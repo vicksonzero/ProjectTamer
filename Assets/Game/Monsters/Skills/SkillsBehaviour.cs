@@ -43,6 +43,22 @@ public abstract class SkillsBehaviour : Photon.MonoBehaviour
         this.sqRange = this.range * this.range;
     }
     public abstract float GetCooldownPercent();
+
+
+    public void ApplyDamage(Transform target)
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            target.GetComponent<BPilot>().TakeDamage(this.damages);
+        }
+        else
+        {
+            print("Client does not actually take damage");
+        }
+    }
+
+
+
     #endregion public methods
 
 

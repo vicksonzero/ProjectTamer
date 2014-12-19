@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Greenfly
+  monsterName: Greenfly
   description: MonsterDescription
   hp: 1000
   armour: 0
@@ -1069,8 +1069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  name: Leaf Blade
-  description: 
+  skillName: Leaf Blade
+  description: Throws multiple sharp leaf edges at enemy, dealing grass damage.
   semiauto: 0
   channelTime: 0
   skillTime: 0
@@ -1107,8 +1107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  name: Quick Sting
-  description: 
+  skillName: Wind Blast
+  description: Creates wirlwinds that chases the enemy, dealing normal damage.
   semiauto: 0
   channelTime: 0
   skillTime: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  name: Wind Blast
+  skillName: 
   description: 
   semiauto: 0
   channelTime: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Aqua
+  monsterName: Aqua
   description: MonsterDescription
   hp: 1000
   armour: 0
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  name: Aqua Blast
+  skillName: Aqua Blast
   description: Blows stream of water from its mouth, dealing water damage
   semiauto: 0
   channelTime: 0
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  name: Aqua Smack
+  skillName: Aqua Smack
   description: Smacks enemy with its hands, dealing both normal and water damage
   semiauto: 0
   channelTime: 0
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  name: Bubble Blast
+  skillName: Bubble Blast
   description: Blows bubbles from its mouth, dealing water damage and SLOWS enemy
   semiauto: 0
   channelTime: 0
@@ -1310,29 +1310,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  name: Steam Screen
+  skillName: Steam Screen
   description: Wraps himself in hot steam, dealing fire dmg and reduces the chance
     being hit
   semiauto: 0
   channelTime: 0
   skillTime: 0
   recoveryTime: 0
-  cooldown: 1
+  cooldown: 10
   pP: 20
   ppRemaining: 0
-  range: 50
+  range: 5e+07
   damages:
   - 0
-  - 100
+  - .0500000007
   - 0
   - 0
   - 0
   - 0
   debuffs: []
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 11400000, guid: cbe58430c62f2804299d568263561a58, type: 2}
   spawnAt: 0
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  duration: 0
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1345,7 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  name: Horn Attack
+  skillName: Horn Attack
   description: Walks a short distance to enemy and swing its horns at them
   semiauto: 0
   channelTime: 0
@@ -1380,7 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  name: Fire Blast
+  skillName: Fire Blast
   description: Blows fire from its mouth, dealing fire damage
   semiauto: 0
   channelTime: 0
@@ -1412,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Inferno
+  monsterName: Inferno
   description: MonsterDescription
   hp: 1000
   armour: 0
@@ -1443,7 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Roclay
+  monsterName: Roclay
   description: MonsterDescription
   hp: 1000
   armour: 0
@@ -1475,7 +1474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  name: Earthquake
+  skillName: Earthquake
   description: Shakes the ground around the enemy, causing rock damage
   semiauto: 0
   channelTime: 0
@@ -1495,8 +1494,7 @@ MonoBehaviour:
   debuffs: []
   effectPrefab: {fileID: 0}
   spawnAt: 1
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  duration: 0
 --- !u!114 &11400028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1509,7 +1507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  name: Rock Throw
+  skillName: Rock Throw
   description: Throws rock at enemy, dealing WHAT? damage
   semiauto: 0
   channelTime: 0
@@ -1544,7 +1542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  name: Roll Out
+  skillName: Roll Out
   description: Roll Forward with a temporary shield, dealing normal damage
   semiauto: 0
   channelTime: 0
@@ -1576,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b67e7452345100e488a66aaf3ff7e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Sizz
+  monsterName: Sizz
   description: MonsterDescription
   hp: 1000
   armour: 0
@@ -1626,7 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  name: Slap
+  skillName: Slap
   description: Slaps enemy with its long fins, dealing normal damage
   semiauto: 0
   channelTime: 0
@@ -1661,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  name: Thunder Strike
+  skillName: Thunder Strike
   description: Calls upon thunde from the sky, dealing massive Electric damage.
   semiauto: 0
   channelTime: 0
@@ -1670,19 +1668,18 @@ MonoBehaviour:
   cooldown: 1
   pP: 20
   ppRemaining: 0
-  range: 50
+  range: 500
   damages:
   - 0
   - 0
   - 0
   - 0
-  - 90
+  - 1
   - 0
   debuffs: []
-  effectPrefab: {fileID: 0}
+  effectPrefab: {fileID: 11400000, guid: 988d2536e68f4d14182a61484bca6476, type: 2}
   spawnAt: 1
-  offsets:
-  - {x: 0, y: 0, z: 0}
+  duration: 4
 --- !u!114 &11400040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1695,7 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  name: Thunger Charge
+  skillName: "Static Charge\r\nStatic Charge"
   description: Wraps itself with static charges, and crush towards the enemy, dealing
     Electric damage.
   semiauto: 0

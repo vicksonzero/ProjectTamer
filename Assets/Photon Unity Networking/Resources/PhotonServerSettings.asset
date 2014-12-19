@@ -51,4 +51,5 @@ MonoBehaviour:
   - spawnAllBullets
   - netSpawnAllBullets
   - EndGame
+  - netSpawnAOE
   DisableAutoOpenWizard: 0

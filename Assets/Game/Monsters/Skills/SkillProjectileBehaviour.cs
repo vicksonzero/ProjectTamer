@@ -32,7 +32,16 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     {
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
-        if(this.ppRemaining > 0 && this.canShoot())
+        if(this.ppRemaining <= 0) {
+            Debug.Log("no PP remaining");
+            return;
+        }
+        if (this.controller.state.enemyVector.sqrMagnitude > this.sqRange)
+        {
+            Debug.Log("Too far can't shoot");
+            return;
+        }
+        if(this.canShoot())
         {
             // set alarm for next canShoot
             this.setAlarm();
@@ -45,8 +54,17 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     {
         if (!this.semiauto) return;
         if (skillID != this.skillID) return;
-
-        if (this.ppRemaining > 0 && this.canShoot())
+        if (this.ppRemaining <= 0)
+        {
+            Debug.Log("no PP remaining");
+            return;
+        }
+        if (this.controller.state.enemyVector.sqrMagnitude > this.sqRange)
+        {
+            Debug.Log("Too far can't shoot");
+            return;
+        }
+        if (this.canShoot())
         {
             // set alarm for next canShoot
             this.setAlarm();
@@ -79,17 +97,6 @@ public class SkillProjectileBehaviour : SkillsBehaviour
         return (Time.time-this.alarmStart)/(this.alarmStop - this.alarmStart);
     }
 
-    public void ApplyDamage(Transform target)
-    {
-        if (PhotonNetwork.isMasterClient)
-        {
-            target.GetComponent<BPilot>().TakeDamage(this.damages);
-        }
-        else
-        {
-            print("Client does not actually take damage");
-        }
-    }
 
 
     #endregion public methods

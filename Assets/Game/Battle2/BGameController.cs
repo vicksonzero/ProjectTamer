@@ -76,7 +76,7 @@ public class BGameController : Photon.MonoBehaviour {
             pilot_go.SetActive(false);
         }
         this.GetComponent<BEndGame>().EndGameScreen(
-            winner.data.name + " "+
+            winner.data.monsterName + " "+
             "(Player " + (winner.pilotID == 0 ? "A" : "B") + ") "+
             "Wins!"
         );

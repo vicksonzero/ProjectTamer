@@ -8,7 +8,13 @@ public class FSkillsBehaviour {
         SkillsBehaviour behaviour = null;
         if (oSkill is OSkillAOE)
         {
-            //behaviour = go.AddComponent<Skill>();
+            behaviour = go.AddComponent<SkillAOEBehaviour>();
+
+            addCommon(go, behaviour, oSkill);
+
+            ((SkillAOEBehaviour)behaviour).effectPrefab = ((OSkillAOE)oSkill).effectPrefab;
+            ((SkillAOEBehaviour)behaviour).spawnAt = ((OSkillAOE)oSkill).spawnAt;
+            ((SkillAOEBehaviour)behaviour).duration = ((OSkillAOE)oSkill).duration;
 
         }
         else if (oSkill is OSkillBlast)
@@ -16,6 +22,7 @@ public class FSkillsBehaviour {
             behaviour = go.AddComponent<SkillBlastBehaviour>();
 
             addCommon(go, behaviour, oSkill);
+
 
             ((SkillBlastBehaviour)behaviour).blast = ((OSkillBlast)oSkill).blast;
             ((SkillBlastBehaviour)behaviour).offset = ((OSkillBlast)oSkill).offset;

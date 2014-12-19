@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillBlastBehaviour : SkillsBehaviour
+public class SkillMeleeBehaviour : SkillsBehaviour
 {
-
+    
     [Header("Implementation")]
-    public BlastBehaviour blast;
-    [Tooltip("relative positions to spawn bullet. \nrotated with player. Damage will be done ")]
-    public Vector3 offset = Vector3.zero;
-    [Tooltip("relative direction to spawn bullet. \nrotated with player. ")]
-    public Vector3 blastDirection = Vector3.forward;
+    public ProjectileBehaviour bulletPrefab;
+    [Tooltip("relative positions to spawn bullet. \nrotated with player. \n\nmore than 1 entry mean that more than 1 projectile per shot, \nwhich means that damage is scaled up.\n\nProjectiles will then steer to target")]
+    public Transform[] spawnPoints = new Transform[0];
+    public float bulletSpeed = 100;
+    public float bulletSteerSpeed = 100;
 
     
 
@@ -32,9 +32,7 @@ public class SkillBlastBehaviour : SkillsBehaviour
     {
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
-        //Debug.Log("in skill");
-        if (this.ppRemaining <= 0)
-        {
+        if(this.ppRemaining <= 0) {
             Debug.Log("no PP remaining");
             return;
         }
@@ -43,12 +41,12 @@ public class SkillBlastBehaviour : SkillsBehaviour
             Debug.Log("Too far can't shoot");
             return;
         }
-        if (this.canShoot())
+        if(this.canShoot())
         {
             // set alarm for next canShoot
             this.setAlarm();
-            this.spawnPS();
-            this.ApplyDamage(this.controller.enemy);
+            this.spawnAllBullets();
+            this.ppRemaining--;
         }
     }
 
@@ -70,12 +68,11 @@ public class SkillBlastBehaviour : SkillsBehaviour
         {
             // set alarm for next canShoot
             this.setAlarm();
-            this.spawnPS();
-            this.ApplyDamage(this.controller.enemy);
+            this.spawnAllBullets();
+            this.ppRemaining--;
         }
 
     }
-
 
     public override void SkillStop(int skillID)
     {
@@ -99,6 +96,9 @@ public class SkillBlastBehaviour : SkillsBehaviour
     {
         return (Time.time-this.alarmStart)/(this.alarmStop - this.alarmStart);
     }
+
+
+
     #endregion public methods
 
     #region private methods
@@ -112,23 +112,20 @@ public class SkillBlastBehaviour : SkillsBehaviour
         this.alarmStop = Time.time + this.cooldown;
     }
 
-    private void spawnPS()
+    private void spawnAllBullets()
     {
-        print("spawnPS() start");
-        Vector3 spawnPos = this.transform.localPosition + this.offset;
+        this.photonView.RPC("netSpawnAllBullets", PhotonTargets.All,this.skillID);
+    }
 
-        Vector3 shootVector = this.transform.TransformDirection( this.blastDirection);
-
-        GameObject b = PhotonNetwork.Instantiate(
-            this.blast.name,
-            spawnPos,
-            Quaternion.LookRotation(shootVector),
-            0
-        );
-        b.transform.SetParent(this.transform);
-        b.transform.localPosition = this.offset;
-        b.particleSystem.startSpeed = this.range;
-        b.particleSystem.Play();
+    [RPC]
+    public void netSpawnAllBullets(int skillID)
+    {
+        if (skillID != this.skillID)
+        {
+            print("wrong skillID");
+            return;
+        }
+        print("netSpawnAllBullets() called");
     }
     #endregion // private methods
 

@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillBlastBehaviour : SkillsBehaviour
+public class SkillAOEBehaviour : SkillsBehaviour
 {
-
+    
     [Header("Implementation")]
-    public BlastBehaviour blast;
-    [Tooltip("relative positions to spawn bullet. \nrotated with player. Damage will be done ")]
-    public Vector3 offset = Vector3.zero;
-    [Tooltip("relative direction to spawn bullet. \nrotated with player. ")]
-    public Vector3 blastDirection = Vector3.forward;
+    public AOEBehaviour effectPrefab;
+    [Tooltip("The feet of enemy, or at my feet")]
+    public OSkillAOE.SpawnAt spawnAt;
+    public float duration;
 
     
 
@@ -32,9 +31,7 @@ public class SkillBlastBehaviour : SkillsBehaviour
     {
         //Debug.Log("Skill");
         if (skillID != this.skillID) return;
-        //Debug.Log("in skill");
-        if (this.ppRemaining <= 0)
-        {
+        if(this.ppRemaining <= 0) {
             Debug.Log("no PP remaining");
             return;
         }
@@ -43,12 +40,21 @@ public class SkillBlastBehaviour : SkillsBehaviour
             Debug.Log("Too far can't shoot");
             return;
         }
-        if (this.canShoot())
+        if(this.canShoot())
         {
             // set alarm for next canShoot
             this.setAlarm();
-            this.spawnPS();
-            this.ApplyDamage(this.controller.enemy);
+            Vector3[] positions = new Vector3[1];
+            if (this.spawnAt == OSkillAOE.SpawnAt.ENEMY)
+            {
+                positions[0] = this.controller.enemy.position;
+            }
+            else
+            {
+                positions[0] = this.controller.transform.position;
+            }
+            this.spawnAOE(positions);
+            this.ppRemaining--;
         }
     }
 
@@ -70,12 +76,20 @@ public class SkillBlastBehaviour : SkillsBehaviour
         {
             // set alarm for next canShoot
             this.setAlarm();
-            this.spawnPS();
-            this.ApplyDamage(this.controller.enemy);
+            Vector3[] positions = new Vector3[1];
+            if (this.spawnAt == OSkillAOE.SpawnAt.ENEMY)
+            {
+                positions[0] = this.controller.enemy.position;
+            }
+            else
+            {
+                positions[0] = this.controller.transform.position;
+            }
+            this.spawnAOE(positions);
+            this.ppRemaining--;
         }
 
     }
-
 
     public override void SkillStop(int skillID)
     {
@@ -99,6 +113,9 @@ public class SkillBlastBehaviour : SkillsBehaviour
     {
         return (Time.time-this.alarmStart)/(this.alarmStop - this.alarmStart);
     }
+
+
+
     #endregion public methods
 
     #region private methods
@@ -112,23 +129,36 @@ public class SkillBlastBehaviour : SkillsBehaviour
         this.alarmStop = Time.time + this.cooldown;
     }
 
-    private void spawnPS()
+    private void spawnAOE(Vector3[] pos)
     {
-        print("spawnPS() start");
-        Vector3 spawnPos = this.transform.localPosition + this.offset;
+        this.photonView.RPC("netSpawnAOE", PhotonTargets.All, this.skillID, pos);
+    }
 
-        Vector3 shootVector = this.transform.TransformDirection( this.blastDirection);
+    [RPC]
+    public void netSpawnAOE(int skillID, Vector3[] pos)
+    {
+        if (skillID != this.skillID)
+        {
+            print("wrong skillID");
+            return;
+        }
+        print("netSpawnAllBullets() called");
+        // get enemyVector from other component
+        foreach (Vector3 sp in pos)
+        {
 
-        GameObject b = PhotonNetwork.Instantiate(
-            this.blast.name,
-            spawnPos,
-            Quaternion.LookRotation(shootVector),
-            0
-        );
-        b.transform.SetParent(this.transform);
-        b.transform.localPosition = this.offset;
-        b.particleSystem.startSpeed = this.range;
-        b.particleSystem.Play();
+            print("offset:" + sp.ToString());
+            AOEBehaviour b = Instantiate(
+                this.effectPrefab,
+                sp,
+                Quaternion.AngleAxis(Random.value*360,Vector3.up)
+            ) as AOEBehaviour;
+            b.target = this.controller.enemy;
+            b.ownerSkill = this;
+            b.startAlarm(this.duration);
+
+            //b.debuffs = this.debuffs;
+        }
     }
     #endregion // private methods
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MonsterData : MonoBehaviour {
 
-    public string name = "MonsterName";
+    public string monsterName = "MonsterName";
     public string description = "MonsterDescription";
     [Tooltip("Max HP for the monster")]
     public float hp = 1000;
