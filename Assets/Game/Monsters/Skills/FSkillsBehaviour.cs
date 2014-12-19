@@ -13,6 +13,7 @@ public class FSkillsBehaviour {
             addCommon(go, behaviour, oSkill);
 
             ((SkillAOEBehaviour)behaviour).effectPrefab = ((OSkillAOE)oSkill).effectPrefab;
+            ((SkillAOEBehaviour)behaviour).radius = ((OSkillAOE)oSkill).radius;
             ((SkillAOEBehaviour)behaviour).spawnAt = ((OSkillAOE)oSkill).spawnAt;
             ((SkillAOEBehaviour)behaviour).duration = ((OSkillAOE)oSkill).duration;
 

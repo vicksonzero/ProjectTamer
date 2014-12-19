@@ -8,6 +8,7 @@ public abstract class OSkills : MonoBehaviour
     public int skillID = -1;
     public string skillName = "";
     public string description = "";
+    public Sprite icon;
     [Tooltip("whether or not the monster continues to attack as long as the skill button is pressed")]
     public bool semiauto = false;
     [Tooltip("Time needed for a monster to stand still BEFORE using the attack")]
@@ -23,7 +24,7 @@ public abstract class OSkills : MonoBehaviour
     [HideInInspector]
     public int ppRemaining;
     public float range = 50;
-    [Tooltip("damages with damage type \n(0=normal, 1=Fire, \n2=Water, 3=Grass, \n4=Electric, 5=Rock)\n\nDamage is done when bullet hits target")]
+    [Tooltip("damages with damage type \n(0=Normal, 1=Fire, 2=Grass, \n3=Rock, 4=Electric, 5=Water)\n\nDamage is done when bullet hits target")]
     public float[] damages = new float[6];
     public GameObject[] debuffs;
 

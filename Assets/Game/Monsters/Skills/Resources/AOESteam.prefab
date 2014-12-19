@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: AOESteam
   m_TagString: Untagged
@@ -139,9 +140,23 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 0}
   ownerSkill: {fileID: 0}
   target: {fileID: 0}
-  bulletSpeed: 100
-  bulletSteerSpeed: 100
+  ps: {fileID: 0}
+  radius: 0
+  lightningPrefab: {fileID: 0}
+  lightningFrequency: 10
   animationEndTime: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bee09cf1db122f45893144b613eb50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLive: 10
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -172,7 +187,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -329,7 +344,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 2706197837
+        rgba: 3027794040
       minMaxState: 0
     startSize:
       scalar: 108.790001
@@ -399,11 +414,11 @@ ParticleSystem:
       minMaxState: 0
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 609
+    maxNumParticles: 300
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 3
+    type: 2
     radius: 144.572144
     angle: 25.1200008
     length: 5
@@ -417,7 +432,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 609
+      scalar: 300
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -494,18 +509,13 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 1
   RotationModule:
-    enabled: 0
+    enabled: 1
     curve:
-      scalar: .785398185
+      scalar: .785398126
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - time: 1
           value: 1
           inSlope: 0
           outSlope: 0
@@ -516,18 +526,13 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - time: 1
-          value: 0
+          value: -1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-      minMaxState: 0
+      minMaxState: 3
   ColorModule:
     enabled: 0
     gradient:

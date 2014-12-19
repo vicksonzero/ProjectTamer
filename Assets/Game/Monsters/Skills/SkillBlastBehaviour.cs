@@ -114,17 +114,22 @@ public class SkillBlastBehaviour : SkillsBehaviour
 
     private void spawnPS()
     {
-        print("spawnPS() start");
+        this.photonView.RPC("netSpawnPS", PhotonTargets.All, this.skillID);
+    }
+
+    [RPC]
+    public void netSpawnPS(int skillID)
+    {
+        print("net spawnPS() start");
         Vector3 spawnPos = this.transform.localPosition + this.offset;
 
         Vector3 shootVector = this.transform.TransformDirection( this.blastDirection);
 
-        GameObject b = PhotonNetwork.Instantiate(
-            this.blast.name,
+        GameObject b = Instantiate(
+            this.blast,
             spawnPos,
-            Quaternion.LookRotation(shootVector),
-            0
-        );
+            Quaternion.LookRotation(shootVector)
+        ) as GameObject;
         b.transform.SetParent(this.transform);
         b.transform.localPosition = this.offset;
         b.particleSystem.startSpeed = this.range;

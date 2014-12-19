@@ -50,21 +50,21 @@ public class ProjectileBehaviour : PhotonView
     {
         if (coln.collider.transform == this.target)
         {
-            this.OnHitEnemy();
+            this.OnHitEnemy(coln.contacts[0].point);
         }
     }
     void OnTriggerEnter(Collider col)
     {
         if (col.transform == this.target)
         {
-            this.OnHitEnemy();
+            this.OnHitEnemy(col.ClosestPointOnBounds(this.transform.position));
         }
     }
 
-    void OnHitEnemy()
+    void OnHitEnemy(Vector3 contactPoint)
     {
         // let there be firework!
-        Instantiate(this.hitEffectPrefab, this.transform.position, Quaternion.identity);
+        Instantiate(this.hitEffectPrefab, contactPoint, Quaternion.identity);
 
         this.ownerSkill.ApplyDamage(this.target);
         // bye!

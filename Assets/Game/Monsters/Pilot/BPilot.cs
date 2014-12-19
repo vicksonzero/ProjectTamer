@@ -69,7 +69,17 @@ public class BPilot : MonoBehaviour {
     {
         print("Taking damage:"+ damages.ToString());
 
-        this.state.hp -= damages[0];
+        float[] trueDamages = BElements.TranslateDamage(damages, (int)this.data.element);
+        float trueDmg = 0;
+        for (int i = 0; i < damages.Length; i++)
+        {
+            trueDmg += trueDamages[i];
+        }
+
+        print("Translated damage:" + trueDamages.ToString() + "-->" + trueDmg);
+
+
+        this.state.hp -= trueDmg;
         game.OnMonsterTakesDamage(this);
     }
     public void TakeBuff(string name)

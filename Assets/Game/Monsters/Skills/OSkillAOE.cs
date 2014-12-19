@@ -7,6 +7,7 @@ public class OSkillAOE : OSkills
     [Header("Implementation")]
 
     public AOEBehaviour effectPrefab;
+    public float radius;
 
     [Tooltip("The feet of enemy, or at my feet")]
     public SpawnAt spawnAt;

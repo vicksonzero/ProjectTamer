@@ -12,8 +12,7 @@ public class MonsterData : MonoBehaviour {
     public float armour = 0;
 
     [Tooltip("type of monster. used to calculate damage and to learn skills. ")]
-    public Types type = Types.Water; // no element
-    public enum Types { Fire, Grass, Rock, Electric, Water };
+    public BElements.Elements element = BElements.Elements.Water; // no element
 
     [Tooltip("Normal moving speed. can be overridden by other means")]
     public float movingSpeed = 2;
@@ -29,7 +28,7 @@ public class MonsterData : MonoBehaviour {
     [Header("AI")]
     // favourite distance
     public AnimationCurve comfortZone;   // 1 if safe, 0 if danger
-    public float comfortZoneScale = 300;
+    public float comfortZoneScale;// = 300;
     public AnimationCurve attackZone;   // 1 if easy to attack, 0 if cannot attack
 
     void start()

@@ -12,15 +12,23 @@ public class AOEBehaviour : PhotonView
     public SkillAOEBehaviour ownerSkill;
     public Transform target;    // chasing target
 
+    public ParticleSystem ps;
+    public float radius;
+    public Transform lightningPrefab;
+    public float lightningFrequency = 1;
+    private float lightningElapsedTime=0;
+    private float lightningDuration=0;
+
     public float animationEndTime;
 
     private float elapsedTime;
-    private float endTime;
     private float duration;
 
 	// Use this for initialization
 	void Start () {
-        this.animationEndTime = Time.time + 3;
+        //this.animationEndTime = Time.time + 3;
+        this.GetComponentInChildren<CapsuleCollider>().radius = this.radius;
+        this.lightningDuration = 1 / this.lightningFrequency;
 	}
 
     void OnPhotonInstantiate()
@@ -32,6 +40,18 @@ public class AOEBehaviour : PhotonView
 	// Update is called once per frame
     void Update()
     {
+        this.lightningElapsedTime += Time.deltaTime;
+        if (this.lightningElapsedTime < this.lightningDuration)
+        {
+            // nothing
+        }
+        else
+        {
+            this.lightningElapsedTime = 0;
+            this.spawnLightnings();
+        }
+
+
         if (duration > 0)
         {
             this.elapsedTime += Time.deltaTime;
@@ -41,6 +61,7 @@ public class AOEBehaviour : PhotonView
             }
             else
             {
+                this.lightningElapsedTime = 0;
                 this.duration = 0;
                 Destroy(this.gameObject);
             }
@@ -64,7 +85,7 @@ public class AOEBehaviour : PhotonView
     void OnHitEnemy()
     {
         // let there be firework!
-        Instantiate(this.hitEffectPrefab, this.transform.position, Quaternion.identity);
+        // firework moved to spawnLightnings()!
 
         this.ownerSkill.ApplyDamage(this.target);
     }
@@ -74,4 +95,22 @@ public class AOEBehaviour : PhotonView
         this.elapsedTime = 0;
         this.duration = duration;
     }
+
+    private void spawnLightnings()
+    {
+
+        Vector2 newPosition = Random.insideUnitCircle * this.radius;
+
+        Instantiate(this.lightningPrefab, this.transform.position + new Vector3(newPosition.x, 0, newPosition.y), Quaternion.identity);
+
+        if (target != null && (target.position - this.transform.position).sqrMagnitude <= this.radius * this.radius)
+        {
+            Instantiate(this.lightningPrefab, this.target.position, Quaternion.identity);
+            Instantiate(this.hitEffectPrefab, this.target.position, Quaternion.identity);
+
+            this.OnHitEnemy();
+        }
+
+    }
+
 }

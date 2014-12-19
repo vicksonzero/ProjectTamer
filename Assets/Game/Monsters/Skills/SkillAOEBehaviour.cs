@@ -6,6 +6,7 @@ public class SkillAOEBehaviour : SkillsBehaviour
     
     [Header("Implementation")]
     public AOEBehaviour effectPrefab;
+    public float radius;
     [Tooltip("The feet of enemy, or at my feet")]
     public OSkillAOE.SpawnAt spawnAt;
     public float duration;
@@ -147,7 +148,7 @@ public class SkillAOEBehaviour : SkillsBehaviour
         foreach (Vector3 sp in pos)
         {
 
-            print("offset:" + sp.ToString());
+            //print("offset:" + sp.ToString());
             AOEBehaviour b = Instantiate(
                 this.effectPrefab,
                 sp,

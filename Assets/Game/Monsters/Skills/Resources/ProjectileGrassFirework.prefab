@@ -141,7 +141,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     startSpeed:
-      scalar: 21.4561882
+      scalar: 38.4520531
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -258,7 +258,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 6.73000002
+      scalar: 15.7299995
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -273,7 +273,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .524517059
+          value: .41958043
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -320,8 +320,8 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: 3.76999998
-    angle: 61.8243179
+    radius: 8.63000011
+    angle: 51.643055
     length: 5
     boxX: 1
     boxY: 1
@@ -333,7 +333,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 64.8600006
+      scalar: 130.199997
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -480,7 +480,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 34635
+        atime0: 46677
         atime1: 65535
         atime2: 0
         atime3: 0
