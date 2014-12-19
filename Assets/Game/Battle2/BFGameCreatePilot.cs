@@ -37,6 +37,14 @@ public class BFGameCreatePilot :MonoBehaviour {
         nameTag.SetParent(pilot_go.transform);
         pilotBehaviour.nameTag = nameTag;
 
+        // add audiosource
+        AudioSource aud = pilot_go.AddComponent<AudioSource>();
+
+        // add rigid body
+        //Rigidbody rb = pilot_go.AddComponent<Rigidbody>();
+        //rb.useGravity = true;
+        
+
         // add monster details
         this.pilotGetIntoMonster(pilot_go, monsterID);
 

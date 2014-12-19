@@ -11,6 +11,7 @@ public class SkillBlastBehaviour : SkillsBehaviour
     [Tooltip("relative direction to spawn bullet. \nrotated with player. ")]
     public Vector3 blastDirection = Vector3.forward;
 
+    public AudioClip shootSound;
     
 
     private float alarmStart = 0;
@@ -125,15 +126,19 @@ public class SkillBlastBehaviour : SkillsBehaviour
 
         Vector3 shootVector = this.transform.TransformDirection( this.blastDirection);
 
-        GameObject b = Instantiate(
+        BlastBehaviour b = Instantiate(
             this.blast,
             spawnPos,
             Quaternion.LookRotation(shootVector)
-        ) as GameObject;
+        ) as BlastBehaviour;
         b.transform.SetParent(this.transform);
         b.transform.localPosition = this.offset;
         b.particleSystem.startSpeed = this.range;
         b.particleSystem.Play();
+
+        this.ApplyDamage(this.controller.enemy);
+
+        this.audio.PlayOneShot(shootSound);
     }
     #endregion // private methods
 

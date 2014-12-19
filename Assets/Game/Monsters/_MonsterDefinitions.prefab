@@ -273,6 +273,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100032
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400032}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &100034
 GameObject:
   m_ObjectHideFlags: 1
@@ -629,6 +644,18 @@ Transform:
   - {fileID: 400016}
   m_Father: {fileID: 400012}
   m_RootOrder: 2
+--- !u!4 &400032
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 30.6000004, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 400036}
+  m_RootOrder: 1
 --- !u!4 &400034
 Transform:
   m_ObjectHideFlags: 1
@@ -652,6 +679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400038}
+  - {fileID: 400032}
   m_Father: {fileID: 400012}
   m_RootOrder: 3
 --- !u!4 &400038
@@ -913,8 +941,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 27.6659546, z: 22.7793598}
-  m_Center: {x: 0, y: 30.3152466, z: .743565559}
+  m_Size: {x: 30, y: 43.2050705, z: 22.7793598}
+  m_Center: {x: 0, y: 22.5456886, z: .743565559}
 --- !u!65 &6500004
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -937,8 +965,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 33.9664841, z: 45.3674431}
-  m_Center: {x: 0, y: 37.0367622, z: 7.57448006}
+  m_Size: {x: 30, y: 53.2554855, z: 45.3674431}
+  m_Center: {x: 0, y: 27.3922615, z: 7.57448006}
 --- !u!65 &6500008
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1095,6 +1123,7 @@ MonoBehaviour:
   - {fileID: 400042}
   - {fileID: 400046}
   bulletSpeed: 200
+  shootSound: {fileID: 8300000, guid: 64b2c4a92602fb04181371ee4d94959c, type: 3}
   bulletSteerSpeed: 3
 --- !u!114 &11400004
 MonoBehaviour:
@@ -1168,6 +1197,7 @@ MonoBehaviour:
   - {fileID: 400050}
   - {fileID: 400044}
   bulletSpeed: 100
+  shootSound: {fileID: 8300000, guid: 25d2f626560199547a615b314373b5a1, type: 3}
   bulletSteerSpeed: 2
 --- !u!114 &11400008
 MonoBehaviour:
@@ -1232,8 +1262,9 @@ MonoBehaviour:
   - 100
   debuffs: []
   blast: {fileID: 11400000, guid: 7bb0b7a884ccbac4b869c8cdbcf5b179, type: 2}
-  offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  offset: {x: 0, y: 94.5, z: 10.6000004}
   blastDirection: {x: 0, y: 0, z: 1}
+  shootSound: {fileID: 8300000, guid: 13dfcc526c791fe439caf27465b5a30d, type: 3}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1302,8 +1333,9 @@ MonoBehaviour:
   - 20
   debuffs: []
   blast: {fileID: 11400000, guid: 341fa287ea8388f49a1ba9d358e2e983, type: 2}
-  offset: {x: 0, y: 43.9000015, z: 39.9000015}
+  offset: {x: 0, y: 94.5, z: 10.6000004}
   blastDirection: {x: 0, y: 0, z: 1}
+  shootSound: {fileID: 8300000, guid: d7500f636ad1fd5499ca507082a0f75f, type: 3}
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1340,6 +1372,8 @@ MonoBehaviour:
   radius: 0
   spawnAt: 0
   duration: 0
+  startSound: {fileID: 8300000, guid: e0d7dcdda52ef4b40997a232907b848f, type: 3}
+  hitSound: {fileID: 0}
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1410,6 +1444,7 @@ MonoBehaviour:
   blast: {fileID: 11400000, guid: 841e517e25b338a47b57ca087427189e, type: 2}
   offset: {x: 0, y: 43.9000015, z: 39.9000015}
   blastDirection: {x: 0, y: 0, z: 1}
+  shootSound: {fileID: 8300000, guid: 4c8a5c656e2c2e7429546c8af3b07e61, type: 3}
 --- !u!114 &11400022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1507,6 +1542,8 @@ MonoBehaviour:
   radius: 0
   spawnAt: 1
   duration: 0
+  startSound: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!114 &11400028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1542,6 +1579,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 400016}
   bulletSpeed: 100
+  shootSound: {fileID: 8300000, guid: 34b9c5e4c06768f4ebbeaf07e5537cdd, type: 3}
   bulletSteerSpeed: 100
 --- !u!114 &11400030
 MonoBehaviour:
@@ -1574,9 +1612,11 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  crushEffect: {fileID: 0}
+  effectPrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
   crushSpeed: 100
-  crushSteerSpeed: 100
+  crushDuration: 1
+  startSound: {fileID: 0}
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1697,6 +1737,8 @@ MonoBehaviour:
   radius: 130
   spawnAt: 1
   duration: 4
+  startSound: {fileID: 8300000, guid: 484327cde9f3b824f97c245fa0f328d0, type: 3}
+  hitSound: {fileID: 8300000, guid: 580477d5f78887441bb27bc3b6c9e32b, type: 3}
 --- !u!114 &11400040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1717,10 +1759,10 @@ MonoBehaviour:
   channelTime: 0
   skillTime: 0
   recoveryTime: 0
-  cooldown: 1
+  cooldown: 4
   pP: 20
   ppRemaining: 0
-  range: 50
+  range: 150
   damages:
   - 0
   - 0
@@ -1729,9 +1771,11 @@ MonoBehaviour:
   - 110
   - 0
   debuffs: []
-  crushEffect: {fileID: 400036, guid: 0553f42ed239bb646b0c33e6d6e6b1d7, type: 2}
-  crushSpeed: 100
-  crushSteerSpeed: 100
+  effectPrefab: {fileID: 11400002, guid: 0553f42ed239bb646b0c33e6d6e6b1d7, type: 2}
+  spawnPoint: {fileID: 400032}
+  crushSpeed: 2.5
+  crushDuration: 1.5
+  startSound: {fileID: 8300000, guid: 51040a7e3497a0c408f3613c57904988, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

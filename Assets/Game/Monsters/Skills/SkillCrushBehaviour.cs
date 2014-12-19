@@ -5,11 +5,19 @@ public class SkillCrushBehaviour : SkillsBehaviour
 {
     
     [Header("Implementation")]
-    public ProjectileBehaviour bulletPrefab;
+    public CrushBehaviour effectPrefab;
     [Tooltip("relative positions to spawn bullet. \nrotated with player. \n\nmore than 1 entry mean that more than 1 projectile per shot, \nwhich means that damage is scaled up.\n\nProjectiles will then steer to target")]
-    public Transform[] spawnPoints = new Transform[0];
-    public float bulletSpeed = 100;
-    public float bulletSteerSpeed = 100;
+    public Transform spawnPoint;
+    public float crushSpeed = 100;
+    public float crushDuration = 1;
+    public float crushElapsed = 1;
+
+    public AudioClip startSound;
+
+
+    private CrushBehaviour crushGO;
+
+    public BPilotState.MovePattern beforeChaseMovePattern;
 
     
 
@@ -23,7 +31,21 @@ public class SkillCrushBehaviour : SkillsBehaviour
     void Start() { this.init(); } 
 	
 	// Update is called once per frame
-	void Update () {}
+	void Update () {
+        if (this.crushElapsed > -1)
+        {
+            if (this.crushElapsed < this.crushDuration)
+            {
+                this.crushElapsed += Time.deltaTime;
+            }
+            else
+            {
+                this.controller.state.movePattern = this.beforeChaseMovePattern;
+                Destroy(crushGO.gameObject);
+                this.crushElapsed = -1;
+            }
+        }
+    }
     #endregion // unity events
 
     #region Messages
@@ -91,6 +113,7 @@ public class SkillCrushBehaviour : SkillsBehaviour
         {
             print("invalid skillID");
         }
+        this.crushElapsed = -1;
     }
     public override float GetCooldownPercent()
     {
@@ -125,8 +148,18 @@ public class SkillCrushBehaviour : SkillsBehaviour
             return;
         }
         print("netSpawnAllBullets() called");
-        // get enemyVector from other component
+        this.audio.PlayOneShot(startSound);
+
+        this.crushGO = Instantiate(this.effectPrefab, this.spawnPoint.position, Quaternion.identity) as CrushBehaviour;
+        Physics.IgnoreCollision(this.crushGO.collider, this.collider);
         
+        this.crushGO.target = this.controller.enemy;
+        this.crushGO.ownerSkill = this;
+        this.crushGO.transform.SetParent(this.transform);
+
+        this.beforeChaseMovePattern = this.controller.state.movePattern;
+        this.controller.state.movePattern = BPilotState.MovePattern.ChaseEnemy;
+        this.crushElapsed = 0;
     }
     #endregion // private methods
 

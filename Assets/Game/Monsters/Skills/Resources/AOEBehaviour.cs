@@ -5,6 +5,7 @@ using System.Collections;
  * Heavy bullet behaviour
  * used with AutoDieBehaviour
  */
+[RequireComponent(typeof(AudioSource))]
 public class AOEBehaviour : PhotonView
 {
 
@@ -18,6 +19,8 @@ public class AOEBehaviour : PhotonView
     public float lightningFrequency = 1;
     private float lightningElapsedTime=0;
     private float lightningDuration=0;
+    public AudioClip hitSound;
+
 
     public float animationEndTime;
 
@@ -107,6 +110,8 @@ public class AOEBehaviour : PhotonView
         {
             Instantiate(this.lightningPrefab, this.target.position, Quaternion.identity);
             Instantiate(this.hitEffectPrefab, this.target.position, Quaternion.identity);
+            this.audio.PlayOneShot(hitSound);
+
 
             this.OnHitEnemy();
         }

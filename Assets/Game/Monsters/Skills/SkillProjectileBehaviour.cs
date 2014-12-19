@@ -11,6 +11,8 @@ public class SkillProjectileBehaviour : SkillsBehaviour
     public float bulletSpeed = 100;
     public float bulletSteerSpeed = 100;
 
+    public AudioClip shootSound;
+
     
 
     private float alarmStart = 0;
@@ -126,6 +128,7 @@ public class SkillProjectileBehaviour : SkillsBehaviour
             return;
         }
         print("netSpawnAllBullets() called");
+        this.audio.PlayOneShot(shootSound);
         // get enemyVector from other component
         foreach(Transform sp in this.spawnPoints)
         {

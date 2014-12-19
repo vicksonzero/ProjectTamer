@@ -16,6 +16,9 @@ public class FSkillsBehaviour {
             ((SkillAOEBehaviour)behaviour).radius = ((OSkillAOE)oSkill).radius;
             ((SkillAOEBehaviour)behaviour).spawnAt = ((OSkillAOE)oSkill).spawnAt;
             ((SkillAOEBehaviour)behaviour).duration = ((OSkillAOE)oSkill).duration;
+            ((SkillAOEBehaviour)behaviour).startSound = ((OSkillAOE)oSkill).startSound;
+            ((SkillAOEBehaviour)behaviour).hitSound = ((OSkillAOE)oSkill).hitSound;
+
 
         }
         else if (oSkill is OSkillBlast)
@@ -28,11 +31,29 @@ public class FSkillsBehaviour {
             ((SkillBlastBehaviour)behaviour).blast = ((OSkillBlast)oSkill).blast;
             ((SkillBlastBehaviour)behaviour).offset = ((OSkillBlast)oSkill).offset;
             ((SkillBlastBehaviour)behaviour).blastDirection = ((OSkillBlast)oSkill).blastDirection;
+            ((SkillBlastBehaviour)behaviour).shootSound = ((OSkillBlast)oSkill).shootSound;
 
         }
         else if (oSkill is OSkillCrush)
         {
-            Debug.Log("OSkillCrush not ready");
+            behaviour = go.AddComponent<SkillCrushBehaviour>();
+
+            addCommon(go, behaviour, oSkill);
+
+            ((SkillCrushBehaviour)behaviour).effectPrefab  =((OSkillCrush)oSkill).effectPrefab  ;
+            //((SkillCrushBehaviour)behaviour).spawnPoint    =((OSkillCrush)oSkill).spawnPoint    ;
+            ((SkillCrushBehaviour)behaviour).crushSpeed    =((OSkillCrush)oSkill).crushSpeed    ;
+            ((SkillCrushBehaviour)behaviour).crushDuration =((OSkillCrush)oSkill).crushDuration ;
+            ((SkillCrushBehaviour)behaviour).startSound = ((OSkillCrush)oSkill).startSound;
+
+            
+            Transform sp = ((OSkillCrush)oSkill).spawnPoint;
+            Transform sp_go = Object.Instantiate(sp, go.transform.position, go.transform.rotation) as Transform;
+            sp_go.localPosition = sp.localPosition;
+            sp_go.localRotation = sp.localRotation;
+            sp_go.SetParent(go.transform);
+            ((SkillCrushBehaviour)behaviour).spawnPoint = sp_go;
+            
 
         }
         else if (oSkill is OSkillMelee)
@@ -49,6 +70,7 @@ public class FSkillsBehaviour {
             ((SkillProjectileBehaviour)behaviour).bulletPrefab = ((OSkillProjectile)oSkill).bullet;
             ((SkillProjectileBehaviour)behaviour).bulletSpeed = ((OSkillProjectile)oSkill).bulletSpeed;
             ((SkillProjectileBehaviour)behaviour).bulletSteerSpeed = ((OSkillProjectile)oSkill).bulletSteerSpeed;
+            ((SkillProjectileBehaviour)behaviour).shootSound = ((OSkillProjectile)oSkill).shootSound;
             
             ((SkillProjectileBehaviour)behaviour).spawnPoints = new Transform[((OSkillProjectile)oSkill).spawnPoints.Length];
             for(int i= ((OSkillProjectile)oSkill).spawnPoints.Length-1; i >=0; i--){

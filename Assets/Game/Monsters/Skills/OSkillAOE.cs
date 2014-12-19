@@ -15,5 +15,9 @@ public class OSkillAOE : OSkills
 
     public float duration;
 
+    public AudioClip startSound;
+    public AudioClip hitSound;
+
+
 
 }

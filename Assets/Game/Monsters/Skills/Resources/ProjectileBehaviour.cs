@@ -15,6 +15,7 @@ public class ProjectileBehaviour : PhotonView
     public float bulletSteerSpeed = 100;
 
     public float animationEndTime;
+    public AudioClip onHitSound;
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +66,7 @@ public class ProjectileBehaviour : PhotonView
     {
         // let there be firework!
         Instantiate(this.hitEffectPrefab, contactPoint, Quaternion.identity);
+        this.ownerSkill.audio.PlayOneShot(onHitSound);
 
         this.ownerSkill.ApplyDamage(this.target);
         // bye!

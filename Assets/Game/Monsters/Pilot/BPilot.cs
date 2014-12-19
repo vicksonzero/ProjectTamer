@@ -98,6 +98,7 @@ public class BPilot : MonoBehaviour {
     {
         this.state.givenPosition = this.transform.position;
         this.state.hp = this.data.hp;
+        this.state.movePattern = BPilotState.MovePattern.FollowPlayer;
     }
 
     /**
@@ -120,6 +121,22 @@ public class BPilot : MonoBehaviour {
     private void AIDecide()
     {
         //this.doFaceEnemy = true;
+
+        switch (this.state.movePattern)
+        {
+            case BPilotState.MovePattern.FollowPlayer:
+                this.state.moveVector = this.state.givenPosition - this.transform.position;
+                break;
+            case BPilotState.MovePattern.ChaseEnemy:
+                this.state.moveVector = this.enemy.position - this.transform.position;
+                break;
+            case BPilotState.MovePattern.Stop:
+                this.state.moveVector = Vector3.zero;
+                break;
+            case BPilotState.MovePattern.Wander:
+                this.state.moveVector = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+                break;
+        }
     }
 
     /**
@@ -128,6 +145,7 @@ public class BPilot : MonoBehaviour {
     private void Action()
     {
         //this.stepDangerColor();
+        
         this.stepMove();
         //if (this.doFaceEnemy)
         //{
@@ -154,17 +172,14 @@ public class BPilot : MonoBehaviour {
     {
 
 
-        if (this.state.moveVector.sqrMagnitude > this.data.movingSpeed)
+        if (this.state.moveVector.sqrMagnitude > this.data.sqMovingSpeed)
         {
             this.transform.position += this.state.moveVector.normalized * this.data.movingSpeed;
         }
         else
         {
-            this.transform.position = this.state.givenPosition;
+            this.transform.position += this.state.moveVector;
         }
-
-
-        //this.transform.position = this.givenPosition;
 
     }
 

@@ -13,6 +13,9 @@ public class OSkillProjectile : OSkills
 
     public float bulletSpeed = 100;
 
+    public AudioClip shootSound;
+
+
     public float bulletSteerSpeed = 100;
 
 

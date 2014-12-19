@@ -102,6 +102,7 @@ MonoBehaviour:
   bulletSpeed: 100
   bulletSteerSpeed: 100
   animationEndTime: 0
+  onHitSound: {fileID: 8300000, guid: 0e4a2e9202aedb44680425ce0d4a8f3b, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

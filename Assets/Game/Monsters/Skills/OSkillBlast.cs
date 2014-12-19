@@ -11,6 +11,7 @@ public class OSkillBlast : OSkills
     [Tooltip("relative direction to spawn bullet. \nrotated with player. ")]
     public Vector3 blastDirection = Vector3.forward;
 
+    public AudioClip shootSound;
 
 
 }

@@ -11,6 +11,8 @@ public class SkillAOEBehaviour : SkillsBehaviour
     public OSkillAOE.SpawnAt spawnAt;
     public float duration;
 
+    public AudioClip startSound;
+    public AudioClip hitSound;
     
 
     private float alarmStart = 0;
@@ -144,6 +146,9 @@ public class SkillAOEBehaviour : SkillsBehaviour
             return;
         }
         print("netSpawnAllBullets() called");
+
+        this.audio.PlayOneShot(startSound);
+
         // get enemyVector from other component
         foreach (Vector3 sp in pos)
         {
@@ -160,6 +165,8 @@ public class SkillAOEBehaviour : SkillsBehaviour
 
             //b.debuffs = this.debuffs;
         }
+        this.audio.PlayOneShot(startSound);
+
     }
     #endregion // private methods
 

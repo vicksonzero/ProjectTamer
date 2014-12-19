@@ -309,6 +309,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400036}
   - 114: {fileID: 11400000}
+  - 135: {fileID: 13500000}
+  - 114: {fileID: 11400002}
+  - 54: {fileID: 5400000}
   m_Layer: 0
   m_Name: CrushStatic
   m_TagString: Untagged
@@ -554,9 +557,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: 30.6000004, z: 0}
+  m_LocalScale: {x: 20.5831757, y: 20.5831776, z: 20.5831776}
   m_Children:
   - {fileID: 400034}
   - {fileID: 400016}
@@ -940,6 +943,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100030}
   m_Mesh: {fileID: 4300006, guid: 02fea924744d4ee4fa48bbca7568dd1b, type: 3}
+--- !u!54 &5400000
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -985,6 +1003,42 @@ MonoBehaviour:
   - {fileID: 400034}
   - {fileID: 400016}
   lightningFrequency: 20
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369475171acf8a94fb5143bb91b0eb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subId: 0
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  instantiationId: 0
+  hitEffectPrefab: {fileID: 400002, guid: 259610276a6d37c428c79df152347906, type: 2}
+  ownerSkill: {fileID: 0}
+  target: {fileID: 0}
+  animationEndTime: 0
+--- !u!135 &13500000
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.21000004
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
