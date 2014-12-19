@@ -431,6 +431,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100052
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400052}
+  m_Layer: 0
+  m_Name: CrushVector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -642,6 +657,7 @@ Transform:
   m_Children:
   - {fileID: 400004}
   - {fileID: 400016}
+  - {fileID: 400052}
   m_Father: {fileID: 400012}
   m_RootOrder: 2
 --- !u!4 &400032
@@ -726,8 +742,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100044}
-  m_LocalRotation: {x: 0, y: .250887156, z: 0, w: .968016326}
-  m_LocalPosition: {x: 20.6000004, y: 0, z: 16.6000004}
+  m_LocalRotation: {x: 0, y: .4226183, z: 0, w: .906307817}
+  m_LocalPosition: {x: 30, y: 0, z: 3.5999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -762,12 +778,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100050}
-  m_LocalRotation: {x: 0, y: -.250886917, z: 0, w: .968016446}
-  m_LocalPosition: {x: -20.6000004, y: 0, z: 16.6000004}
+  m_LocalRotation: {x: 0, y: -.4226183, z: 0, w: .906307817}
+  m_LocalPosition: {x: -30, y: 0, z: 3.5999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 5
+--- !u!4 &400052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 43.1000023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400030}
+  m_RootOrder: 2
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -1069,7 +1097,7 @@ MonoBehaviour:
   description: MonsterDescription
   hp: 1000
   armour: 0
-  element: 5
+  element: 2
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1185,9 +1213,9 @@ MonoBehaviour:
   ppRemaining: 0
   range: 250
   damages:
-  - 20
+  - 10
   - 0
-  - 80
+  - 40
   - 0
   - 0
   - 0
@@ -1196,9 +1224,9 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 400050}
   - {fileID: 400044}
-  bulletSpeed: 100
+  bulletSpeed: 150
   shootSound: {fileID: 8300000, guid: 25d2f626560199547a615b314373b5a1, type: 3}
-  bulletSteerSpeed: 2
+  bulletSteerSpeed: 1.70000005
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1460,7 +1488,7 @@ MonoBehaviour:
   description: MonsterDescription
   hp: 1000
   armour: 0
-  element: 5
+  element: 1
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1491,7 +1519,7 @@ MonoBehaviour:
   description: MonsterDescription
   hp: 1000
   armour: 0
-  element: 5
+  element: 3
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1529,7 +1557,7 @@ MonoBehaviour:
   cooldown: 1
   pP: 20
   ppRemaining: 0
-  range: 50
+  range: 200
   damages:
   - 10
   - 0
@@ -1538,10 +1566,10 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  effectPrefab: {fileID: 0}
-  radius: 0
+  effectPrefab: {fileID: 11400004, guid: 1c9240552be3bb547b18be689f8b711a, type: 2}
+  radius: 200
   spawnAt: 1
-  duration: 0
+  duration: 4
   startSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!114 &11400028
@@ -1603,7 +1631,7 @@ MonoBehaviour:
   cooldown: 1
   pP: 20
   ppRemaining: 0
-  range: 50
+  range: 200
   damages:
   - 30
   - 0
@@ -1612,11 +1640,11 @@ MonoBehaviour:
   - 0
   - 0
   debuffs: []
-  effectPrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  crushSpeed: 100
-  crushDuration: 1
-  startSound: {fileID: 0}
+  effectPrefab: {fileID: 11400002, guid: 90d13d5af600cff4c8b86a3fccb05aa6, type: 2}
+  spawnPoint: {fileID: 400052}
+  crushSpeed: 2.5
+  crushDuration: 2
+  startSound: {fileID: 8300000, guid: d644023b8f910c74d9b815e685913680, type: 3}
 --- !u!114 &11400032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1632,7 +1660,7 @@ MonoBehaviour:
   description: MonsterDescription
   hp: 1000
   armour: 0
-  element: 5
+  element: 4
   movingSpeed: 2
   sqMovingSpeed: 2
   turningSpeed: 100
@@ -1715,7 +1743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: 1
   skillName: Thunder Strike
-  description: Calls upon thunde from the sky, dealing massive Electric damage.
+  description: Calls upon thunder from the sky, dealing massive Electric damage.
   icon: {fileID: 0}
   semiauto: 0
   channelTime: 0

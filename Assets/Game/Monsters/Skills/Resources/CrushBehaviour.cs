@@ -33,14 +33,14 @@ public class CrushBehaviour : PhotonView
     {
         if (coln.collider.transform == this.target)
         {
-            this.OnHitEnemy(coln.contacts[0].point);
+            this.OnHitEnemy(target.position);
         }
     }
     void OnTriggerEnter(Collider col)
     {
         if (col.transform == this.target)
         {
-            this.OnHitEnemy(col.ClosestPointOnBounds(this.transform.position));
+            this.OnHitEnemy(target.position);
         }
     }
 

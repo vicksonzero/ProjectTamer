@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300002}
-  - 136: {fileID: 13600000}
   - 23: {fileID: 2300002}
   m_Layer: 0
   m_Name: Cylinder
@@ -27,6 +26,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400000}
+  - 135: {fileID: 13500000}
   m_Layer: 0
   m_Name: AOEThunder
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -306, y: 0, z: 105}
+  m_LocalPosition: {x: -364, y: 0, z: -45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -139,22 +139,17 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 400002, guid: 259610276a6d37c428c79df152347906, type: 2}
   ownerSkill: {fileID: 0}
   target: {fileID: 0}
-  radius: 130
-  lightningPrefab: {fileID: 400000, guid: 7a470fa559508e042b422821f29b2376, type: 2}
-  lightningFrequency: 2
-  animationEndTime: 0
---- !u!136 &13600000
-CapsuleCollider:
+--- !u!135 &13500000
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
+  m_GameObject: {fileID: 100004}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 130
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19800000
 ParticleSystem:
@@ -390,7 +385,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 500
+    maxNumParticles: 200
   ShapeModule:
     serializedVersion: 2
     enabled: 1

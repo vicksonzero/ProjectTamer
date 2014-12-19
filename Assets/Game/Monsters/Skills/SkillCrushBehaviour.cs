@@ -41,7 +41,7 @@ public class SkillCrushBehaviour : SkillsBehaviour
             else
             {
                 this.controller.state.movePattern = this.beforeChaseMovePattern;
-                Destroy(crushGO.gameObject);
+                if(crushGO) Destroy(crushGO.gameObject);
                 this.crushElapsed = -1;
             }
         }
